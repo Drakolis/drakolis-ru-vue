@@ -1,0 +1,51 @@
+{
+  "family": [
+    {
+      "about": "Creator of this site.",
+      "apis": [
+        {
+          "param": "76561198038432884",
+          "type": "steam"
+        },
+        {
+          "param": "drakolis66",
+          "type": "lastfm"
+        }
+      ],
+      "contacts": [
+        {
+          "type": "telegram",
+          "url": "https://t.me/drakolis"
+        },
+        {
+          "type": "skype",
+          "url": "skype:dragon.fox.66@yandex.ru"
+        },
+        {
+          "type": "instagram",
+          "url": "https://www.instagram.com/drakolis_66/"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/DrakonLisowski"
+        },
+        {
+          "type": "mail",
+          "url": "mailto:drakolis@drakolis.ru"
+        }
+      ],
+      "cvLanguages": [
+        "en",
+        "ru"
+      ],
+      "dateOfBirth": "23.05.1993",
+      "id": "drakolis",
+      "name": "Mika Drakolis",
+      "occupation": "Developer (C#, Python, JS)",
+      "orderId": 1,
+      "photoUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
+      "showCV": 1,
+      "visible": 1
+    }
+  ]
+}
