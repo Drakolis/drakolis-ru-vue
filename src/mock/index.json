@@ -18,16 +18,24 @@
           "url": "https://t.me/drakolis"
         },
         {
-          "type": "skype",
-          "url": "skype:dragon.fox.66@yandex.ru"
-        },
-        {
           "type": "instagram",
           "url": "https://www.instagram.com/drakolis_66/"
         },
         {
           "type": "github",
           "url": "https://github.com/DrakonLisowski"
+        },
+        {
+          "type": "vk",
+          "url": "https://vk.com/drakolis"
+        },
+        {
+          "type": "facebook",
+          "url": "https://facebook.com/drakolis"
+        },
+        {
+          "type": "skype",
+          "url": "skype:dragon.fox.66@yandex.ru"
         },
         {
           "type": "mail",

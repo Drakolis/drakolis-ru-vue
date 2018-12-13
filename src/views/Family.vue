@@ -42,16 +42,26 @@
           </v-card>
         </v-flex>
 
-        <v-flex xs4 :key="person.id + '_contacts'" class="px-2">
-          <v-btn fab large
+        <v-flex xs3 :key="person.id + '_contacts'" class="px-2">
+          <template
             v-for="contact in person.contacts"
-            :key="contact.type"
-            :color="getContactColor(contact.type)"
-          ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
-          </v-btn>
+          >
+            <v-tooltip bottom :key="contact.type">
+              <v-btn fab large
+                slot="activator"
+                @click="getContactOnClickAction(contact)"
+                :color="getContactColor(contact.type)"
+              ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
+              </v-btn>
+              <span style="text-transform: capitalize;" class="subheading">{{getContactTooltip(contact.type)}}</span>
+            </v-tooltip>
+          </template>
         </v-flex>
 
-        <v-flex xs2 :key="person.id + '_lastfm'">
+        <v-flex xs3 :key="person.id + '_lastfm'">
+        </v-flex>
+
+        <v-flex xs3 :key="person.id + '_empty'">
         </v-flex>
 
         <v-flex xs12 :key="person.id + '_divider'">
@@ -82,6 +92,14 @@ export default {
   methods: {
     showCV(person) {
     },
+    getContactOnClickAction({url, type}) {
+      if (url.indexOf('http')>-1){
+          window.open(url, '_blank');
+          window.focus();
+      } else {
+          window.location.href = url;
+      }
+    },
     getContactIcon(type) {
       if (type === 'mail')
         return `fas fa-envelope`;
@@ -89,26 +107,45 @@ export default {
     },
     getContactColor(type) {
       switch (type) {
-          case "vk":
-              return '#4a76a8';
-          case "telegram":
-              return '#5682a3';
-          case "skype":
-              return '#1686d9';
-          case "github":
-              return '#24292e';
-          case "whatsapp":
-              return '#1ebea5';
-          case "mail":
-              return '#20c997';
-          case "instagramm":
-              return '#303030';
-          default:
-              return 'secondary';
+        case "vk":
+          return '#4a76a8';
+        case "facebook":
+          return '#4267b2';
+        case "twitter":
+          return '#1da1f2';
+        case "deviantart":
+          return '#475c4d';
+        case "telegram":
+          return '#5682a3';
+        case "skype":
+          return '#1686d9';
+        case "github":
+          return '#24292e';
+        case "whatsapp":
+          return '#1ebea5';
+        case "mail":
+          return '#00796B';
+        case "instagramm":
+          return '#303030';
+        case "discord":
+          return "#7289da";
+        default:
+          return 'secondary';
       }
+    },
+    getContactTooltip(type) {
+        switch (type) {
+            case "vk":
+                return 'VK';
+            case "github":
+                return 'GitHub';
+            default:
+                return type;
+        }
     }
   },
   mounted() {
+    /*
     this.$http.get(getFamilyDataURL)
       .then(res => {
         this.personData = res.body.family;
@@ -118,6 +155,11 @@ export default {
         this.pageError = res;
         this.pageLoaded = true;
       });
+    */
+    setTimeout(() => {
+      this.personData = require('../mock').family;
+      this.pageLoaded = true;
+    }, 1000 + 2000 * Math.random());
   }
 }
 </script>

@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Family from "./views/Family.vue";
+import Home from "./views/Home";
+import Family from "./views/Family";
+import Budget from "./views/Budget";
 
 Vue.use(Router);
 
@@ -13,6 +14,11 @@ export default new Router({
       path: "/family",
       name: "family",
       component: Family
+    },
+    {
+      path: "/budget",
+      name: "budget",
+      component: Budget
     },
     {
       path: "/",
