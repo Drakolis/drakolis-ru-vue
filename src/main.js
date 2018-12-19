@@ -9,6 +9,7 @@ import "./registerServiceWorker";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "typeface-share-tech-mono";
 
 Vue.config.productionTip = false;
 
