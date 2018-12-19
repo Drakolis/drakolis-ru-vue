@@ -2,7 +2,7 @@
   <div>
     <div class=""></div>
     <div class="terminal crt">
-      Test! 123
+      <span>Test! 123</span>
     </div>
   </div>
 </template>
@@ -16,24 +16,30 @@
   .terminal {
     font-family: Share Tech Mono;
     font-size: 150%;
-    color: #1bd9db;
+    color: #20fafd;
     background-color: #222;
     height: 100vh;
     padding: 5px;
   }
 @keyframes flicker {
-  @for $i from 1 through 20 {
-    #{($i*5%)} {
+  @for $i from 1 through 50 {
+    #{($i * 2%)} {
       opacity: random(10000) / 10000;
     }
   }
 }
 @keyframes textShadow {
-  @for $i from 1 through 20 {
-    #{($i*5%)} {
+  @for $i from 1 through 50 {
+    #{($i * 2%)} {
       $random1: random(10000) / 10000;
-      $random2: random(40) / 10;
-      text-shadow: ($random1 + $random2) * 1px 0 1px rgba(0,30,255,0.5), -($random1 + $random2) * 1px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+      $random2: random(10000) / 10000;
+      $random3: random(10000) / 10000;
+      $randomBig: random(40) / 10;
+      text-shadow:
+        ($random1 + $randomBig) * 1px 0 1px rgba(0,30,255,0.5),
+        -($random2 + $randomBig) * 1px 0 1px rgba(255,0,80,0.3),
+        ($random3 - $randomBig) * 1px 0 1px rgba(0,255,10,0.3),
+        0 0 3px;
     }
   }
 }
@@ -49,7 +55,7 @@
   opacity: 0;
   z-index: 2;
   pointer-events: none;
-  animation: flicker 0.15s infinite;
+  animation: flicker 1.5s infinite;
 }
 .crt::before {
   content: " ";
@@ -65,7 +71,7 @@
   pointer-events: none;
 }
 .crt {
-  animation: textShadow 1.6s infinite;
+  animation: textShadow 1s infinite;
 }
 
 </style>
