@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home";
 import Family from "./views/Family";
 import Budget from "./views/Budget";
+import InfoNew from "./views/InfoNew";
 
 Vue.use(Router);
 
@@ -10,6 +11,11 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: "/drakolis",
+      name: "drakolis",
+      component: InfoNew
+    },
     {
       path: "/family",
       name: "family",

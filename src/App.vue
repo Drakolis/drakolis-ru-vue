@@ -1,24 +1,18 @@
 <template>
-  <router-view/>
-</template>
-
-<!--
-<template>
   <v-app dark>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span class="drakolis-font">Drakolis</span>
+        <span class="font-weight-light">.RU</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>open_in_new</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <v-btn flat slot="activator">
+          <span class="mr-2">Login</span>
+          <v-icon>input</v-icon>
+        </v-btn>
+        <span>Dragons Only!</span>
+      </v-tooltip>
     </v-toolbar>
 
     <v-content>
@@ -26,7 +20,6 @@
     </v-content>
   </v-app>
 </template>
--->
 
 <script>
 
@@ -39,3 +32,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.drakolis-font {
+  font-family: 'Coda','Roboto',sans-serif !important;
+}
+.mono-font {
+  font-family: 'Roboto Mono','Courier New', Courier, monospace !important;
+}
+</style>

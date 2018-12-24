@@ -42,18 +42,60 @@
           "url": "mailto:drakolis@drakolis.ru"
         }
       ],
-      "cvLanguages": [
-        "en",
-        "ru"
-      ],
       "dateOfBirth": "23.05.1993",
       "id": "drakolis",
       "name": "Mika Drakolis",
-      "occupation": "Developer (C#, Python, JS)",
+      "occupation": "Developer (C#, Python, JavaScript)",
       "orderId": 1,
       "photoUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
-      "showCV": 1,
-      "visible": 1
+      "visible": 1,
+      "timeline": [
+        {
+          "name": "Analyst",
+          "companyName": "SKB-Bank",
+          "description": "",
+          "companyDescription": "",
+          "reason": "Professional Growth",
+          "dateFrom": "07.2016",
+          "dateTo": "12.2016"
+        },
+        {
+          "name": "Middle Autotest Developer (C#)",
+          "companyName": "MTS",
+          "description": "",
+          "companyDescription": "",
+          "reason": "Relocation",
+          "dateFrom": "12.2016",
+          "dateTo": "12.2017"
+        },
+        {
+          "name": "Middle Autotest Developer (C#)",
+          "companyName": "TaxCom",
+          "description": "",
+          "companyDescription": "",
+          "reason": "Professional Growth",
+          "dateFrom": "12.2017",
+          "dateTo": "06.2017"
+        },
+        {
+          "name": "Middle Backend Node.js Developer (JavaScript)",
+          "companyName": "IQ Option",
+          "description": "",
+          "companyDescription": "",
+          "reason": "",
+          "dateFrom": "06.2018",
+          "dateTo": null
+        },
+        {
+          "name": "Full Stack Developer (TypeScript)",
+          "companyName": "Serokell",
+          "description": "",
+          "companyDescription": "",
+          "reason": "Project Closed",
+          "dateFrom": "09.2018",
+          "dateTo": "11.2018"
+        }
+      ]
     }
   ]
 }

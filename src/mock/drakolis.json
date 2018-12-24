@@ -1,0 +1,94 @@
+{
+  "name": "Mika Drakolis",
+  "title": "Dragon, Tester, Developer (C#, Python, PHP, JavaScript)",
+  "contacts": [
+    {
+      "type": "telegram",
+      "url": "https://t.me/drakolis"
+    },
+    {
+      "type": "instagram",
+      "url": "https://www.instagram.com/drakolis_66/"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/DrakonLisowski"
+    },
+    {
+      "type": "vk",
+      "url": "https://vk.com/drakolis"
+    },
+    {
+      "type": "facebook",
+      "url": "https://facebook.com/drakolis"
+    },
+    {
+      "type": "skype",
+      "url": "skype:dragon.fox.66@yandex.ru"
+    },
+    {
+      "type": "mail",
+      "url": "mailto:drakolis@drakolis.ru"
+    }
+  ],
+  "timeline": [
+    {
+      "name": "Credit Analyst",
+      "companyName": "SKB-Bank",
+      "color": "teal darken-4",
+      "description": "",
+      "companyDescription": "",
+      "dateFrom": "07.2016",
+      "dateTo": "12.2016"
+    },
+    {
+      "name": "Middle QA Automation Engineer (C#)",
+      "companyName": "MTS",
+      "color": "red darken-1",
+      "description": "",
+      "companyDescription": "",
+      "dateFrom": "12.2016",
+      "dateTo": "12.2017"
+    },
+    {
+      "name": "Middle QA Automation Engineer (C#)",
+      "companyName": "TaxCom",
+      "color": "light-blue darken-3",
+      "description": "",
+      "companyDescription": "",
+      "dateFrom": "12.2017",
+      "dateTo": "06.2017"
+    },
+    {
+      "name": "Middle Backend Node.js Developer (JavaScript)",
+      "companyName": "IQ Option",
+      "color": "orange accent-4",
+      "description": "",
+      "companyDescription": "",
+      "dateFrom": "06.2018",
+      "dateTo": null
+    },
+    {
+      "name": "Full Stack Developer (TypeScript)",
+      "companyName": "Serokell",
+      "color": "grey darken-4",
+      "description": "",
+      "companyDescription": "",
+      "dateFrom": "09.2018",
+      "dateTo": "11.2018"
+    }
+  ],
+
+  "apis": [
+    {
+      "param": "76561198038432884",
+      "type": "steam"
+    },
+    {
+      "param": "drakolis66",
+      "type": "lastfm"
+    }
+  ],
+  "dateOfBirth": "23.05.1993",
+  "photoUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500"
+}

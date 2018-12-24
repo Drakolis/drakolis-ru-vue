@@ -7,61 +7,72 @@
         <breeding-rhombus-spinner style="margin: auto" :animation-duration="2000" :size="65" color="#00A8AB" />
       </v-flex>
       <template v-for="person in personData">
-        <v-flex xs3 :key="person.id + '_info'">
+        <v-flex xs3 :key="person.id + '_general'" class="px-1">
           <v-card>
             <v-img
               :src="person.photoUrl"
               aspect-ratio="1"
             ></v-img>
             <v-card-title primary-title>
-              <div>
-                <h3 class="headline mb-0">
-                  {{person.name}}
-                </h3>
-                <div class="mt-2">
-                  <ul class="unstyled">
-                    <li>
-                      <span class="font-weight-bold">DOB: </span>{{person.dateOfBirth}}
-                    </li>
-                    <li>
-                      <span class="font-weight-bold">OCC: </span>{{person.occupation}}
-                    </li>
-                    <li>
-                      <span class="font-weight-bold">ABT: </span>{{person.about}}
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <h3 class="display-1 mb-0">
+                {{person.name}}
+              </h3>
             </v-card-title>
-
-            <v-card-actions v-if="person.cvLanguages && person.cvLanguages.length > 0 && true">
-              <v-btn flat color="primary" v-for="lang in person.cvLanguages" :key="lang+'_resume'">
-                {{`Resume (${lang.toUpperCase()})`}}
-              </v-btn>
-            </v-card-actions>
+            <v-card-text class="pt-0">
+              <ul class="unstyled">
+                <li>
+                  <span class="font-weight-bold mono-font">DOB:</span>{{person.dateOfBirth}}
+                </li>
+                <li>
+                  <span class="font-weight-bold mono-font">OCC:</span>{{person.occupation}}
+                </li>
+                <li>
+                  <span class="font-weight-bold mono-font">ABT:</span>{{person.about}}
+                </li>
+              </ul>
+            </v-card-text>
           </v-card>
         </v-flex>
 
-        <v-flex xs3 :key="person.id + '_contacts'" class="px-2">
-          <template
-            v-for="contact in person.contacts"
-          >
-            <v-tooltip bottom :key="contact.type">
-              <v-btn fab large
-                slot="activator"
-                @click="getContactOnClickAction(contact)"
-                :color="getContactColor(contact.type)"
-              ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
-              </v-btn>
-              <span style="text-transform: capitalize;" class="subheading">{{getContactTooltip(contact.type)}}</span>
-            </v-tooltip>
-          </template>
+        <v-flex xs1 :key="person.id + '_social'" class="px-1">
+          <v-layout wrap justify-center>
+            <template
+              v-for="contact in person.contacts"
+            >
+              <v-tooltip bottom :key="contact.type">
+                <v-btn fab large
+                  slot="activator"
+                  @click="getContactOnClickAction(contact)"
+                  :color="getContactColor(contact.type)"
+                ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
+                </v-btn>
+                <span style="text-transform: capitalize;" class="subheading">{{getContactTooltip(contact.type)}}</span>
+              </v-tooltip>
+            </template>
+          </v-layout>
         </v-flex>
 
-        <v-flex xs3 :key="person.id + '_lastfm'">
+        <v-flex xs5 :key="person.id + '_info'" class="px-1">
+          <v-card>
+            <v-card-title primary-title>
+              <h4 class="headline">Experience</h4>
+            </v-card-title>
+            <v-card-text class="pt-0">
+            </v-card-text>
+          </v-card>
         </v-flex>
 
-        <v-flex xs3 :key="person.id + '_empty'">
+        <v-flex xs3 :key="person.id + '_integrations'" class="px-1">
+          <v-card class="mb-2">
+            <v-card-title primary-title>
+              <h4 class="headline">Steam</h4>
+            </v-card-title>
+          </v-card>
+          <v-card>
+            <v-card-title primary-title>
+              <h4 class="headline">Last.FM</h4>
+            </v-card-title>
+          </v-card>
         </v-flex>
 
         <v-flex xs12 :key="person.id + '_divider'">
@@ -167,6 +178,7 @@ export default {
 <style>
 ul.unstyled {
   list-style-type: none;
+
   padding-left: 4pt;
 }
 
