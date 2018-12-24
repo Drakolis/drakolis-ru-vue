@@ -15,6 +15,35 @@
       </v-flex>
 
       <v-flex>
+        <v-layout>
+          <v-flex xs3>
+            <v-card class="elevation-5">
+              <v-img
+                :src="myData.photoUrl"
+                aspect-ratio="1"
+              ></v-img>
+            </v-card>
+          </v-flex>
+
+          <v-flex xs6>
+          </v-flex>
+
+          <v-flex xs3>
+            <v-card class="elevation-5">
+              <v-img
+                :src="myData.photoUrl"
+                aspect-ratio="1"
+              ></v-img>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+
+      <v-flex xs12>
+        <v-divider class="my-4"></v-divider>
+      </v-flex>
+
+      <v-flex>
         <v-layout wrap justify-space-around>
           <template
             v-for="contact in myData.contacts"

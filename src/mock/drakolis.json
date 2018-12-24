@@ -1,6 +1,8 @@
 {
   "name": "Mika Drakolis",
-  "title": "Mathematician, QA Engineer, Developer (C#, Python, JavaScript), Dragon",
+  "title": "Mathematician, Developer, Dragon",
+  "photoUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
+  "avatarUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
   "contacts": [
     {
       "type": "telegram",
@@ -89,6 +91,5 @@
       "type": "lastfm"
     }
   ],
-  "dateOfBirth": "23.05.1993",
-  "photoUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500"
+  "dateOfBirth": "23.05.1993"
 }
