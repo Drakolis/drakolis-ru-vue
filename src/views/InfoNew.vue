@@ -25,13 +25,18 @@
             </v-card>
           </v-flex>
 
-          <v-flex xs6>
+          <v-flex xs6 class="mx-4">
+            <v-card class="elevation-5">
+              <v-card-title>
+                <span class="title">About me</span>
+              </v-card-title>
+            </v-card>
           </v-flex>
 
           <v-flex xs3>
             <v-card class="elevation-5">
               <v-img
-                :src="myData.photoUrl"
+                :src="myData.avatarUrl"
                 aspect-ratio="1"
               ></v-img>
             </v-card>
