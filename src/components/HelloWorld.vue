@@ -13,14 +13,22 @@
 </script>
 
 <style lang="scss">
-  .terminal {
-    font-family: Share Tech Mono;
-    font-size: 150%;
-    color: #20fafd;
-    background-color: #222;
-    height: 100vh;
-    padding: 5px;
+
+.terminal {
+  font-family: Share Tech Mono;
+  font-size: 300%;
+  color: #20fafd;
+  background-color: #063233;
+  height: 100vh;
+  padding: 5px;
+}
+
+@keyframes backlight {
+  @for $i from 1 through 50 {
+    #{($i * 2%)} {
+    }
   }
+}
 @keyframes flicker {
   @for $i from 1 through 50 {
     #{($i * 2%)} {
@@ -29,16 +37,17 @@
   }
 }
 @keyframes textShadow {
-  @for $i from 1 through 50 {
-    #{($i * 2%)} {
+  @for $i from 1 through 20 {
+    #{($i * 5%)} {
       $random1: random(10000) / 10000;
       $random2: random(10000) / 10000;
       $random3: random(10000) / 10000;
       $randomBig: random(40) / 10;
       text-shadow:
-        ($random1 + $randomBig) * 1px 0 1px rgba(0,30,255,0.5),
-        -($random2 + $randomBig) * 1px 0 1px rgba(255,0,80,0.3),
-        ($random3 - $randomBig) * 1px 0 1px rgba(0,255,10,0.3),
+        0 0 2px #20fafd,
+        ($random1 + $randomBig) * 1px 0 2px rgba(0,30,255,0.5),
+        -($random2 + $randomBig) * 1px 0 2px rgba(255,0,80,0.3),
+        ($random3 - $randomBig) * 1px 0 2px rgba(0,255,10,0.3),
         0 0 3px;
     }
   }
@@ -68,6 +77,7 @@
   background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 2;
   background-size: 100% 2px, 3px 100%;
+  box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.7);
   pointer-events: none;
 }
 .crt {
