@@ -16,7 +16,7 @@
 
       <v-flex>
         <v-layout>
-          <v-flex xs3>
+          <v-flex xs3 class="mx-2">
             <v-card class="elevation-5">
               <v-img
                 :src="myData.photoUrl"
@@ -25,15 +25,76 @@
             </v-card>
           </v-flex>
 
-          <v-flex xs6 class="mx-4">
+          <v-flex xs3 class="mx-2">
             <v-card class="elevation-5">
-              <v-card-title>
-                <span class="title">About me</span>
+              <v-card-title primary-title class="pb-0">
+                <span class="title">About Me</span>
               </v-card-title>
+              <v-card-text>
+                <v-list>
+                    <v-list-tile>
+                      <v-list-tile-action>
+                        <v-icon>event</v-icon>
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{myData.dateOfBirth}}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile>
+                      <v-list-tile-action>
+                        <v-icon>location_on</v-icon>
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{myData.location}}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+
+                </v-list>
+              </v-card-text>
+              <v-card-title primary-title class="py-0">
+                <span class="title">Languages I Speak</span>
+              </v-card-title>
+              <v-card-text>
+                <v-list>
+                  <v-list-tile v-for="lang in myData.languages" :key="lang[0]">
+                      <v-list-tile-action v-html="emojify(lang[1])">
+                      </v-list-tile-action>
+                      <!-- <v-list-tile-avatar>
+                        <v-avatar>
+                          <img :src="lang[1]" alt="langicon">
+                        </v-avatar>
+                      </v-list-tile-avatar> -->
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{lang[0]}}</v-list-tile-title>
+                        <v-list-tile-sub-title>{{lang[2]}}</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
+              </v-card-text>
             </v-card>
           </v-flex>
 
-          <v-flex xs3>
+          <v-flex xs3 class="mx-2">
+            <v-card class="elevation-5 teal darken-1">
+              <v-card-title primary-title class="pb-0">
+                <span class="title">My Likes</span>
+              </v-card-title>
+              <v-card-text>
+              </v-card-text>
+              <v-card-title primary-title class="py-0">
+                <span class="title">My Dislikes</span>
+              </v-card-title>
+              <v-card-text>
+              </v-card-text>
+              <v-card-title primary-title class="py-0">
+                <span class="title">My Hobbies</span>
+              </v-card-title>
+              <v-card-text>
+              </v-card-text>
+            </v-card>
+          </v-flex>
+
+          <v-flex xs3 class="mx-2">
             <v-card class="elevation-5">
               <v-img
                 :src="myData.avatarUrl"
@@ -93,6 +154,14 @@
 <script>
 import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners'
+import emojijs from "emoji-js";
+
+const emoji = new emojijs();
+emoji.img_set = 'google';
+emoji.allow_native = false;
+emoji.supports_css = false;
+emoji.img_sets.google.path = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/64/';
+emoji.img_sets.google.sheet = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/sheets-256/64.png';
 
 const getFamilyDataURL = API_HOST + "/family";
 export default {
@@ -157,6 +226,9 @@ export default {
             default:
                 return type;
         }
+    },
+    emojify(string) {
+      return emoji.replace_colons(string)
     }
   },
   mounted() {
@@ -166,13 +238,9 @@ export default {
 </script>
 
 <style>
-ul.unstyled {
-  list-style-type: none;
-
-  padding-left: 4pt;
-}
-
-.v-icon.fa, .v-icon.fab, .v-icon.fal, .v-icon.far, .v-icon.fas {
-  display: inherit;
+.emoji {
+  width: 32px;
+  height: 32px;
+  display: block;
 }
 </style>

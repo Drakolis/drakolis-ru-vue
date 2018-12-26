@@ -3,6 +3,19 @@
   "title": "Mathematician, Developer, Dragon",
   "photoUrl": "https://secure.gravatar.com/avatar/89a21038c3b71fa69b62486c32e9c3a6?s=500",
   "avatarUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
+  "dateOfBirth": "23.05.1993",
+  "likes": [],
+  "dislikes": [],
+
+  "languages": [
+    ["Russian", ":ru:", "Native"],
+    ["English", ":uk:", "Almost Perfect"],
+    ["Dovahzul (Dragon Language)", ":dragon_face:", "Good"],
+    ["Spanish", ":es:", "A Bit"]
+  ],
+  "hobbies": [],
+
+  "location": "Russia, Saint-Petersburg",
   "contacts": [
     {
       "type": "telegram",
@@ -90,6 +103,5 @@
       "param": "drakolis66",
       "type": "lastfm"
     }
-  ],
-  "dateOfBirth": "23.05.1993"
+  ]
 }

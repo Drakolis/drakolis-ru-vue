@@ -40,4 +40,7 @@ export default {
 .mono-font {
   font-family: 'Roboto Mono','Courier New', Courier, monospace !important;
 }
+.v-icon.fa, .v-icon.fab, .v-icon.fal, .v-icon.far, .v-icon.fas {
+  display: inherit;
+}
 </style>
