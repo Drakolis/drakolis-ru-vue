@@ -77,12 +77,12 @@
           <v-flex xs3 class="mx-2">
             <v-card class="elevation-5 teal darken-1">
               <v-card-title primary-title class="pb-0">
-                <span class="title">My Likes</span>
+                <span class="title">I Like</span>
               </v-card-title>
               <v-card-text>
               </v-card-text>
               <v-card-title primary-title class="py-0">
-                <span class="title">My Dislikes</span>
+                <span class="title">I Dislike</span>
               </v-card-title>
               <v-card-text>
               </v-card-text>
