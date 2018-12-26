@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container grid-list-xl>
     <v-layout
       column
     >
@@ -11,47 +11,54 @@
       </v-flex>
 
       <v-flex xs12>
-        <v-divider class="my-4"></v-divider>
+        <v-divider></v-divider>
       </v-flex>
 
       <v-flex>
         <v-layout>
-          <v-flex xs3 class="mx-2">
-            <v-card class="elevation-5">
-              <v-img
-                :src="myData.photoUrl"
-                aspect-ratio="1"
-              ></v-img>
-            </v-card>
+          <v-flex xs4>
+            <v-layout column>
+              <v-flex xs12>
+                <v-card class="elevation-5">
+                  <v-img
+                    :src="myData.photoUrl"
+                    aspect-ratio="1"
+                  ></v-img>
+                </v-card>
+              </v-flex>
+              <v-flex xs12>
+                <v-card class="elevation-5">
+                  <v-card-title primary-title class="pb-0">
+                    <span class="title">About Me</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-list>
+                        <v-list-tile>
+                          <v-list-tile-action>
+                            <v-icon>event</v-icon>
+                          </v-list-tile-action>
+                          <v-list-tile-content>
+                            <v-list-tile-title>{{myData.dateOfBirth}}</v-list-tile-title>
+                          </v-list-tile-content>
+                        </v-list-tile>
+                        <v-list-tile>
+                          <v-list-tile-action>
+                            <v-icon>location_on</v-icon>
+                          </v-list-tile-action>
+                          <v-list-tile-content>
+                            <v-list-tile-title>{{myData.location}}</v-list-tile-title>
+                          </v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
           </v-flex>
 
-          <v-flex xs3 class="mx-2">
+          <v-flex xs4>
             <v-card class="elevation-5">
               <v-card-title primary-title class="pb-0">
-                <span class="title">About Me</span>
-              </v-card-title>
-              <v-card-text>
-                <v-list>
-                    <v-list-tile>
-                      <v-list-tile-action>
-                        <v-icon>event</v-icon>
-                      </v-list-tile-action>
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{myData.dateOfBirth}}</v-list-tile-title>
-                      </v-list-tile-content>
-                    </v-list-tile>
-                    <v-list-tile>
-                      <v-list-tile-action>
-                        <v-icon>location_on</v-icon>
-                      </v-list-tile-action>
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{myData.location}}</v-list-tile-title>
-                      </v-list-tile-content>
-                    </v-list-tile>
-
-                </v-list>
-              </v-card-text>
-              <v-card-title primary-title class="py-0">
                 <span class="title">Languages I Speak</span>
               </v-card-title>
               <v-card-text>
@@ -59,11 +66,6 @@
                   <v-list-tile v-for="lang in myData.languages" :key="lang[0]">
                       <v-list-tile-action v-html="emojify(lang[1])">
                       </v-list-tile-action>
-                      <!-- <v-list-tile-avatar>
-                        <v-avatar>
-                          <img :src="lang[1]" alt="langicon">
-                        </v-avatar>
-                      </v-list-tile-avatar> -->
                       <v-list-tile-content>
                         <v-list-tile-title>{{lang[0]}}</v-list-tile-title>
                         <v-list-tile-sub-title>{{lang[2]}}</v-list-tile-sub-title>
@@ -74,39 +76,44 @@
             </v-card>
           </v-flex>
 
-          <v-flex xs3 class="mx-2">
+          <v-flex xs4>
             <v-card class="elevation-5 teal darken-1">
               <v-card-title primary-title class="pb-0">
                 <span class="title">I Like</span>
               </v-card-title>
               <v-card-text>
+                <v-list class="teal darken-1">
+                  <v-list-tile v-for="like in myData.likes" :key="like[0]">
+                      <v-list-tile-action v-html="emojify(like[1])">
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{like[0]}}</v-list-tile-title>
+                      </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
               </v-card-text>
               <v-card-title primary-title class="py-0">
                 <span class="title">I Dislike</span>
               </v-card-title>
               <v-card-text>
-              </v-card-text>
-              <v-card-title primary-title class="py-0">
-                <span class="title">My Hobbies</span>
-              </v-card-title>
-              <v-card-text>
+                <v-list class="teal darken-1">
+                  <v-list-tile v-for="dislike in myData.dislikes" :key="dislike[0]">
+                      <v-list-tile-action v-html="emojify(dislike[1])">
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{dislike[0]}}</v-list-tile-title>
+                      </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
               </v-card-text>
             </v-card>
           </v-flex>
 
-          <v-flex xs3 class="mx-2">
-            <v-card class="elevation-5">
-              <v-img
-                :src="myData.avatarUrl"
-                aspect-ratio="1"
-              ></v-img>
-            </v-card>
-          </v-flex>
         </v-layout>
       </v-flex>
 
       <v-flex xs12>
-        <v-divider class="my-4"></v-divider>
+        <v-divider></v-divider>
       </v-flex>
 
       <v-flex>
@@ -128,7 +135,7 @@
       </v-flex>
 
       <v-flex xs12>
-        <v-divider class="my-4"></v-divider>
+        <v-divider></v-divider>
       </v-flex>
 
       <v-flex>

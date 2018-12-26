@@ -4,16 +4,30 @@
   "photoUrl": "https://secure.gravatar.com/avatar/89a21038c3b71fa69b62486c32e9c3a6?s=500",
   "avatarUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
   "dateOfBirth": "23.05.1993",
-  "likes": [],
-  "dislikes": [],
-
+  "likes": [
+    ["Animals", ":lizard:"],
+    ["Food", ":spaghetti:"],
+    ["Science", ":telescope:"],
+    ["Nights", ":city_sunset:"],
+    ["Role-playing Games", ":crossed_swords:"]
+  ],
+  "dislikes": [
+    ["Noise", ":loudspeaker:"],
+    ["Simple Tasks", ":sleeping:"],
+    ["Deadlines", ":hourglass_flowing_sand:"],
+    ["Cold", ":snowflake:"],
+    ["Uncertainty", ":question:"]
+  ],
   "languages": [
     ["Russian", ":ru:", "Native"],
     ["English", ":uk:", "Almost Perfect"],
     ["Dovahzul (Dragon Language)", ":dragon_face:", "Good"],
     ["Spanish", ":es:", "A Bit"]
   ],
-  "hobbies": [],
+  "skills": [
+    ["C#", "hzhz", ["Asp.NET", "CodedUI", "Selenium", "Unity"]],
+    ["JavaScript", "hzhz", ["Node.js", "React", "Vue"]]
+  ],
 
   "location": "Russia, Saint-Petersburg",
   "contacts": [
@@ -75,7 +89,7 @@
       "dateTo": "06.2017"
     },
     {
-      "name": "Middle Backend Node.js Developer (JavaScript)",
+      "name": "Middle Back-end Node.js Developer (JavaScript)",
       "companyName": "IQ Option",
       "color": "orange accent-4",
       "description": "",
