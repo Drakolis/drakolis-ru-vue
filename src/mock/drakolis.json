@@ -25,8 +25,12 @@
     ["Spanish", ":es:", "A Bit"]
   ],
   "skills": [
-    ["C#", "hzhz", ["Asp.NET", "CodedUI", "Selenium", "Unity"]],
-    ["JavaScript", "hzhz", ["Node.js", "React", "Vue"]]
+    ["C#", "hzhz", ["Asp.NET", "CodedUI", "Selenium", "Unity"], false],
+    ["JavaScript", "hzhz", ["Node.js", "React", "Vue", "TypeScript"], false],
+    ["SQL", "hzhz", ["MySQL", "PostgreSQL", "SQLite", "Oracle"], false],
+    ["Java", "", ["Selenium", "Cucumber", "Minecraft Sources"], false],
+    ["Python", "", ["Flask", "Django", "Scientific Projects"], false],
+    ["PHP", "", ["Laravel", "PHPixie", "Yii"], false]
   ],
 
   "location": "Russia, Saint-Petersburg",

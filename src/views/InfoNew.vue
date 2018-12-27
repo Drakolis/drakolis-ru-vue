@@ -73,6 +73,34 @@
                   </v-list-tile>
                 </v-list>
               </v-card-text>
+              <v-card-title primary-title class="py-0">
+                <span class="title">I Have Experience In</span>
+              </v-card-title>
+              <v-card-text>
+                <v-list>
+                  <v-list-group
+                    v-for="item in myData.skills"
+                    v-model="item[3]"
+                    :key="item[0]"
+                    no-action
+                  >
+                    <v-list-tile slot="activator">
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ item[0] }}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+
+                    <v-list-tile
+                      v-for="subItem in item[2]"
+                      :key="subItem"
+                    >
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ subItem }}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list-group>
+                </v-list>
+              </v-card-text>
             </v-card>
           </v-flex>
 
