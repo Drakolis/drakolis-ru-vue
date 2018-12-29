@@ -10,6 +10,7 @@ import "./registerServiceWorker";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "@mdi/font/css/materialdesignicons.css";
 import "animate.css/animate.min.css";
 import "typeface-share-tech-mono";
 import "typeface-coda";

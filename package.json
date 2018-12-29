@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",
+    "@mdi/font": "^3.2.89",
     "animate.css": "^3.7.0",
     "apexcharts": "^2.4.1",
     "emoji-datasource-google": "^4.1.0",
