@@ -168,18 +168,9 @@
 
       <v-flex>
         <v-timeline
+          align-top
         >
-          <v-timeline-item v-for="entry in myData.timeline" :color="entry.color || 'primary'">
-            <span slot="opposite" class="subheading font-weight-medium">
-              {{entry.dateFrom}} - {{entry.dateTo || 'Present'}}
-            </span>
-            <v-card :class="entry.color || 'primary'">
-              <v-card-title primary-title>
-                <span class="title">{{entry.name}}</span>&nbsp;@&nbsp;<small class="title font-weight-light">{{entry.companyName}}</small>
-              </v-card-title>
-              <v-card-text class="secondary">rgegwgwgwwrgwrg</v-card-text>
-            </v-card>
-          </v-timeline-item>
+          <TimelineItemExpandable v-for="entry in myData.timeline" :entry="entry" :key="entry.name"/>
         </v-timeline>
       </v-flex>
     </v-layout>
@@ -190,6 +181,7 @@
 import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners'
 import emojijs from "emoji-js";
+import TimelineItemExpandable from "../components/InfoNew/TimelineItemExpandable"
 
 const emoji = new emojijs();
 emoji.img_set = 'google';
@@ -201,7 +193,8 @@ emoji.img_sets.google.sheet = 'https://unpkg.com/emoji-datasource-google@4.0.4/i
 const getFamilyDataURL = API_HOST + "/family";
 export default {
   components: {
-    "breeding-rhombus-spinner": BreedingRhombusSpinner
+    "breeding-rhombus-spinner": BreedingRhombusSpinner,
+    TimelineItemExpandable
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark class="app-scroll-fix">
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span class="drakolis-font">Drakolis</span>

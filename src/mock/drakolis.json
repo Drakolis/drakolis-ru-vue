@@ -67,46 +67,88 @@
   "timeline": [
     {
       "name": "Credit Analyst",
-      "companyName": "SKB-Bank",
+      "company": {
+        "name": "SKB-Bank",
+        "url": "",
+        "about": ""
+      },
+      "points": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
       "color": "teal darken-4",
-      "description": "",
-      "companyDescription": "",
       "dateFrom": "07.2016",
       "dateTo": "12.2016"
     },
     {
       "name": "Middle QA Automation Engineer (C#)",
-      "companyName": "MTS",
+      "company": {
+        "name": "MTS",
+        "url": "",
+        "about": ""
+      },
+      "points": [
+        "UI tests development and support (C# + Coded UI)",
+        "SOAP-Api tests development and support (C#)",
+        "Test run monitor board development and support (C# + ASP.Net)",
+        "Testing environment support",
+        "Test cases analysys"
+      ],
       "color": "red darken-1",
-      "description": "",
-      "companyDescription": "",
       "dateFrom": "12.2016",
       "dateTo": "12.2017"
     },
     {
       "name": "Middle QA Automation Engineer (C#)",
-      "companyName": "TaxCom",
+      "company": {
+        "name": "TaxCom",
+        "url": "",
+        "about": ""
+      },
+      "points": [
+        "UI tests development and support (C# + Selenium + SpecFlow)",
+        "Database tests development and support (C# + MSSQL)",
+        "Unit test development and support (C# + NUnit + MSTest)",
+        "Test launch monitor board development and support (React + Node.js)",
+        "Test cases writing and analysys"
+      ],
       "color": "light-blue darken-3",
-      "description": "",
-      "companyDescription": "",
       "dateFrom": "12.2017",
       "dateTo": "06.2017"
     },
     {
       "name": "Middle Back-end Node.js Developer (JavaScript)",
-      "companyName": "IQ Option",
+      "company": {
+        "name": "IQ Option",
+        "url": "",
+        "about": ""
+      },
+      "points": [
+        "Chat microservice backend development and support (Node.js + Express + Socket.io)",
+        "Chat microservice admin frontend development and support (Node.js + React)",
+        "Integreation API tests development and support (Node.JS + Selfwritten Framework)",
+        "Unit tests development and support (Node.JS + Mocha + Chai)",
+        "Code reviewing"
+      ],
       "color": "orange accent-4",
-      "description": "",
-      "companyDescription": "",
       "dateFrom": "06.2018",
       "dateTo": null
     },
     {
       "name": "Full Stack Developer (TypeScript)",
-      "companyName": "Serokell",
+      "company": {
+        "name": "Serokell",
+        "url": "",
+        "about": ""
+      },
+      "points": [
+        "Company website development and support (TypeScript + Node.js + Selfwritten Framework)",
+        "Company admin panel development and support (TypeScript + Selfwritten Framework)"
+      ],
       "color": "grey darken-4",
-      "description": "",
-      "companyDescription": "",
       "dateFrom": "09.2018",
       "dateTo": "11.2018"
     }
