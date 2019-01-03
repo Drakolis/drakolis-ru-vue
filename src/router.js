@@ -28,8 +28,8 @@ export default new Router({
     },
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "drakolis",
+      component: InfoNew
     },
     {
       path: "/about",

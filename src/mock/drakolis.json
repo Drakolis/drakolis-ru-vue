@@ -8,7 +8,7 @@
     ["Animals", ":lizard:"],
     ["Food", ":spaghetti:"],
     ["Science", ":telescope:"],
-    ["Nights", ":city_sunset:"],
+    ["Night", ":city_sunset:"],
     ["Role-playing Games", ":crossed_swords:"]
   ],
   "dislikes": [
@@ -72,13 +72,7 @@
         "url": "",
         "about": ""
       },
-      "points": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
+      "points": [],
       "color": "teal darken-4",
       "dateFrom": "07.2016",
       "dateTo": "12.2016"

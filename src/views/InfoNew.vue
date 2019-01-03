@@ -15,8 +15,8 @@
       </v-flex>
 
       <v-flex>
-        <v-layout>
-          <v-flex xs4>
+        <v-layout wrap>
+          <v-flex xs12 sm4>
             <v-layout column>
               <v-flex xs12>
                 <v-card class="elevation-5">
@@ -56,7 +56,7 @@
             </v-layout>
           </v-flex>
 
-          <v-flex xs4>
+          <v-flex xs12 sm4>
             <v-card class="elevation-5">
               <v-card-title primary-title class="pb-0">
                 <span class="title">Languages I Speak</span>
@@ -104,7 +104,7 @@
             </v-card>
           </v-flex>
 
-          <v-flex xs4>
+          <v-flex xs12 sm4>
             <v-card class="elevation-5 teal darken-1">
               <v-card-title primary-title class="pb-0">
                 <span class="title">I Like</span>
@@ -169,6 +169,7 @@
       <v-flex>
         <v-timeline
           align-top
+          :dense="this.$vuetify.breakpoint.name === 'xs'"
         >
           <TimelineItemExpandable v-for="entry in myData.timeline" :entry="entry" :key="entry.name"/>
         </v-timeline>
