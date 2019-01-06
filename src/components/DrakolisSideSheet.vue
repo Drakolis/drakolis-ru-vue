@@ -6,6 +6,8 @@
     right
     disable-route-watcher
     :temporary="!displayApp"
+    clipped
+    app
   >
 
     <v-expansion-panel>

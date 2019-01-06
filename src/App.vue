@@ -1,6 +1,6 @@
 <template>
   <v-app dark class="app-scroll-fix">
-    <v-toolbar app>
+    <v-toolbar app clipped-right>
       <v-toolbar-title class="headline text-uppercase">
         <span class="drakolis-font">Drakolis</span>
         <span class="font-weight-light">.RU</span>
@@ -19,10 +19,10 @@
         <span>Toggle Settings Menu</span>
       </v-tooltip>
     </v-toolbar>
+    <drakolis-side-sheet/>
 
     <v-content>
       <router-view/>
-      <drakolis-side-sheet/>
     </v-content>
   </v-app>
 </template>
@@ -62,10 +62,14 @@ export default {
 html {
   overflow: hidden;
 }
-.v-content {
-  height: 100vh;
-}
 .v-content__wrap {
   overflow-y: scroll;
 }
+.v-content {
+  height: 100vh;
+}
+/*
+  overflow: auto;
+}
+*/
 </style>
