@@ -59,4 +59,13 @@ export default {
 .v-icon.fa, .v-icon.fab, .v-icon.fal, .v-icon.far, .v-icon.fas {
   display: inherit;
 }
+html {
+  overflow: hidden;
+}
+.v-content {
+  height: 100vh;
+}
+.v-content__wrap {
+  overflow-y: scroll;
+}
 </style>
