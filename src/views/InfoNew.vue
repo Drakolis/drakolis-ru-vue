@@ -64,7 +64,8 @@
               <v-card-text>
                 <v-list>
                   <v-list-tile v-for="lang in myData.languages" :key="lang[0]">
-                      <v-list-tile-action v-html="emojify(lang[1])">
+                      <v-list-tile-action>
+                        <drakolis-emoji :emoji="lang[1]"></drakolis-emoji>
                       </v-list-tile-action>
                       <v-list-tile-content>
                         <v-list-tile-title>{{lang[0]}}</v-list-tile-title>
@@ -112,7 +113,8 @@
               <v-card-text>
                 <v-list class="teal darken-1">
                   <v-list-tile v-for="like in myData.likes" :key="like[0]">
-                      <v-list-tile-action v-html="emojify(like[1])">
+                      <v-list-tile-action>
+                        <drakolis-emoji :emoji="like[1]"></drakolis-emoji>
                       </v-list-tile-action>
                       <v-list-tile-content>
                         <v-list-tile-title>{{like[0]}}</v-list-tile-title>
@@ -126,7 +128,8 @@
               <v-card-text>
                 <v-list class="teal darken-1">
                   <v-list-tile v-for="dislike in myData.dislikes" :key="dislike[0]">
-                      <v-list-tile-action v-html="emojify(dislike[1])">
+                      <v-list-tile-action>
+                        <drakolis-emoji :emoji="dislike[1]"></drakolis-emoji>
                       </v-list-tile-action>
                       <v-list-tile-content>
                         <v-list-tile-title>{{dislike[0]}}</v-list-tile-title>
@@ -171,7 +174,7 @@
           align-top
           :dense="this.$vuetify.breakpoint.name === 'xs'"
         >
-          <TimelineItemExpandable v-for="entry in myData.timeline" :entry="entry" :key="entry.name"/>
+          <expandable-timeline-item v-for="entry in myData.timeline" :entry="entry" :key="entry.name"/>
         </v-timeline>
       </v-flex>
     </v-layout>
@@ -181,21 +184,15 @@
 <script>
 import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners'
-import emojijs from "emoji-js";
 import TimelineItemExpandable from "../components/InfoNew/TimelineItemExpandable"
-
-const emoji = new emojijs();
-emoji.img_set = 'google';
-emoji.allow_native = false;
-emoji.supports_css = false;
-emoji.img_sets.google.path = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/64/';
-emoji.img_sets.google.sheet = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/sheets-256/64.png';
+import DrakolisEmoji from "../components/DrakolisEmoji"
 
 const getFamilyDataURL = API_HOST + "/family";
 export default {
   components: {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
-    TimelineItemExpandable
+    "expandable-timeline-item": TimelineItemExpandable,
+    "drakolis-emoji": DrakolisEmoji
   },
   data() {
     return {
@@ -203,8 +200,6 @@ export default {
     }
   },
   methods: {
-    showCV(person) {
-    },
     getContactOnClickAction({url, type}) {
       if (url.indexOf('http')>-1){
           window.open(url, '_blank');
@@ -255,9 +250,6 @@ export default {
             default:
                 return type;
         }
-    },
-    emojify(string) {
-      return emoji.replace_colons(string)
     }
   },
   mounted() {
@@ -265,11 +257,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.emoji {
-  width: 32px;
-  height: 32px;
-  display: block;
-}
-</style>
