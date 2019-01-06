@@ -7,27 +7,43 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
-        <v-btn flat slot="activator">
-          <span class="mr-2">Login</span>
+        <v-btn flat icon slot="activator">
           <v-icon>input</v-icon>
         </v-btn>
         <span>Dragons Only!</span>
+      </v-tooltip>
+      <v-tooltip bottom v-if="$store.state.loggedIn">
+        <v-btn flat icon slot="activator" @click="openSettings">
+          <v-icon>settings</v-icon>
+        </v-btn>
+        <span>Toggle Settings Menu</span>
       </v-tooltip>
     </v-toolbar>
 
     <v-content>
       <router-view/>
+      <drakolis-side-sheet/>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import {UI_EVENTS} from "./bus.js";
+import DrakolisSideSheet from "./components/DrakolisSideSheet";
 
 export default {
   name: 'App',
+  components: {
+    "drakolis-side-sheet": DrakolisSideSheet
+  },
   data () {
     return {
       //
+    }
+  },
+  methods: {
+    openSettings() {
+      this.$bus.$emit(UI_EVENTS.SETTINGS_TOGGLE);
     }
   }
 }
