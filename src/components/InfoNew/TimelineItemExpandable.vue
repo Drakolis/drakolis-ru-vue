@@ -4,7 +4,7 @@
     {{dates}}
   </span>
   <v-card :class="entry.color || 'primary'">
-    <v-card-title primary-title :class="entry.color || 'primary'">
+    <v-card-title primary-title :class="`${entry.color || 'primary'} py-3`">
       <a
         class="text-xs-left white--text"
         @click="buttonClick"
