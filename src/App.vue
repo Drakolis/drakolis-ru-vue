@@ -19,7 +19,7 @@
         <span>Toggle Settings Menu</span>
       </v-tooltip>
     </v-toolbar>
-    <drakolis-side-sheet/>
+    <drakolis-side-sheet v-if="$store.state.loggedIn"/>
 
     <v-content>
       <router-view/>
