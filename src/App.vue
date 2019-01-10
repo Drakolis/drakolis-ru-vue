@@ -6,14 +6,40 @@
         <span class="font-weight-light">.RU</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-tooltip bottom>
+
+      <v-menu
+        v-model="signInVisible"
+        :close-on-content-click="false"
+        :nudge-width="250"
+        offset-y
+        bottom
+        offset-x
+        right
+      >
         <v-btn flat icon slot="activator">
           <v-icon>input</v-icon>
         </v-btn>
-        <span>Dragons Only!</span>
-      </v-tooltip>
+
+        <v-card>
+          <v-card-title>
+            <h3>{{$t('global.auth.signIn')}}</h3>
+          </v-card-title>
+          <v-divider/>
+          <v-card-text>
+            <v-form>
+              <v-text-field/>
+              <v-text-field/>
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn flat @click="singInSwitch">{{$t('global.cancel')}}</v-btn>
+            <v-btn flat color="primary" @click="singInSwitch">{{$t('global.auth.signIn')}}</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-menu>
+
       <v-tooltip bottom v-if="$store.state.loggedIn">
-        <v-btn flat icon slot="activator" @click="openSettings">
+        <v-btn flat icon slot="activator" @click="settingSwitch">
           <v-icon>settings</v-icon>
         </v-btn>
         <span>Toggle Settings Menu</span>
@@ -24,27 +50,43 @@
     <v-content>
       <router-view/>
     </v-content>
+    <drakolis-notifications/>
   </v-app>
 </template>
 
 <script>
 import {UI_EVENTS} from "./bus.js";
 import DrakolisSideSheet from "./components/DrakolisSideSheet";
+import Notifications from "./components/Notifications";
 
 export default {
   name: 'App',
   components: {
-    "drakolis-side-sheet": DrakolisSideSheet
+    "drakolis-side-sheet": DrakolisSideSheet,
+    "drakolis-notifications": Notifications
   },
   data () {
     return {
-      //
+      signInVisible: false,
     }
   },
   methods: {
-    openSettings() {
+    settingSwitch() {
       this.$bus.$emit(UI_EVENTS.SETTINGS_TOGGLE);
+    },
+    singInSwitch() {
+      this.signInVisible = !this.signInVisible;
     }
+  },
+  mounted() {
+    //Error notify
+    [UI_EVENTS.ERROR_DEVELOPMENT, UI_EVENTS.ERROR_RESTRICTED].forEach(
+      error => {
+        this.$bus.$on(error, () => {
+          this.$snotify.error(this.$t(`${error}.info`), this.$t(`${error}.title`));
+        })
+      }
+    );
   }
 }
 </script>
