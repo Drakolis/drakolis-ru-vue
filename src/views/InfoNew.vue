@@ -106,12 +106,12 @@
           </v-flex>
 
           <v-flex xs12 sm4>
-            <v-card class="elevation-5 primary">
+            <v-card class="elevation-5">
               <v-card-title primary-title class="pb-0">
                 <span class="title">I Like</span>
               </v-card-title>
               <v-card-text>
-                <v-list class="primary">
+                <v-list>
                   <v-list-tile v-for="like in myData.likes" :key="like[0]">
                       <v-list-tile-action>
                         <drakolis-emoji :emoji="like[1]"></drakolis-emoji>
@@ -126,7 +126,7 @@
                 <span class="title">I Dislike</span>
               </v-card-title>
               <v-card-text>
-                <v-list class="primary">
+                <v-list>
                   <v-list-tile v-for="dislike in myData.dislikes" :key="dislike[0]">
                       <v-list-tile-action>
                         <drakolis-emoji :emoji="dislike[1]"></drakolis-emoji>
