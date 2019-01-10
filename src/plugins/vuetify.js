@@ -9,7 +9,10 @@ Vue.use(Vuetify, {
     secondary2: "#FF9700",
     complimentary: "#00AA6E",
 
-    secondary: "#424242",
+    dark: "#424242",
+    darker: "#353535",
+    darkest: "#212121",
+
     accent: "#82B1FF",
     error: "#FF5252",
     info: "#2196F3",
