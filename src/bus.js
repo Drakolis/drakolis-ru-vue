@@ -3,10 +3,11 @@ import Vue from "vue";
 Vue.prototype.$bus = new Vue();
 
 export const UI_EVENTS = {
-  SETTINGS_TOGGLE: "settingsToggle",
+  SETTINGS_TOGGLE: "settings.toggle",
 
-  UPDATE_ROOM_USERS: "updateRoomUsers",
-  SHOW_PROFILE_DIALOG: "showProfileDialog",
+  ERROR_DEVELOPMENT: "error.development",
+  ERROR_RESTRICTED: "error.restricted",
+
   SHOW_CONTEXT_MENU: "showContextMenu",
   HIDE_CONTEXT_MENU: "hideContextMenu"
 };
