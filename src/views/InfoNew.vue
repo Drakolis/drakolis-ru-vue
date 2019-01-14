@@ -223,6 +223,8 @@ export default {
           return '#1da1f2';
         case "deviantart":
           return '#475c4d';
+        case "linkedin":
+          return '#0073b1';
         case "telegram":
           return '#5682a3';
         case "skype":
@@ -243,6 +245,8 @@ export default {
     },
     getContactTooltip(type) {
         switch (type) {
+            case "linkedin":
+                return 'Linked in';
             case "vk":
                 return 'VK';
             case "github":
