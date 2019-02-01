@@ -4,8 +4,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import i18n from "./i18n";
+import Api from "./api";
 import "./bus";
 import "./resource";
+import "./cookies";
 import "./registerServiceWorker";
 import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -19,9 +21,11 @@ import "typeface-roboto-mono";
 
 Vue.config.productionTip = false;
 
-new Vue({
+const app = new Vue({
   i18n,
   router,
   store,
   render: h => h(App)
 }).$mount("#app");
+
+Vue.prototype.$api = Api(app);

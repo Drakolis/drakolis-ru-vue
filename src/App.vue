@@ -27,8 +27,8 @@
           <v-divider/>
           <v-card-text>
             <v-form>
-              <v-text-field/>
-              <v-text-field/>
+              <v-text-field v-model="login"/>
+              <v-text-field v-model="password"/>
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -68,6 +68,8 @@ export default {
   data () {
     return {
       signInVisible: false,
+      login: "",
+      password: ""
     }
   },
   methods: {
@@ -75,6 +77,7 @@ export default {
       this.$bus.$emit(UI_EVENTS.SETTINGS_TOGGLE);
     },
     singInSwitch() {
+      this.$api.user.signIn(this.login, this.password);
       this.signInVisible = !this.signInVisible;
     }
   },
