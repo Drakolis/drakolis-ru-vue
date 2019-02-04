@@ -7,6 +7,13 @@ export default new Vuex.Store({
   state: {
     loggedIn: false
   },
-  mutations: {},
+  mutations: {
+    signIn(state) {
+      state.loggedIn = true;
+    },
+    signOut(state) {
+      state.loggedIn = false;
+    }
+  },
   actions: {}
 });

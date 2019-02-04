@@ -12,7 +12,7 @@ export default {
         signOut: "Sign out",
         signUp: "Sign up",
 
-        login: "@:global.login/@:global.email",
+        login: "@:global.email",
         password: "@:global.password"
       },
       userName: "User name",

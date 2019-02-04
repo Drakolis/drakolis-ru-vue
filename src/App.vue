@@ -27,8 +27,19 @@
           <v-divider/>
           <v-card-text>
             <v-form>
-              <v-text-field v-model="login"/>
-              <v-text-field v-model="password"/>
+              <v-text-field
+                box
+                v-model="login"
+                browser-autocomplete="login"
+                :label="$t('global.auth.login')"
+              />
+              <v-text-field
+                box
+                v-model="password"
+                type="password"
+                browser-autocomplete="password"
+                :label="$t('global.auth.password')"
+              />
             </v-form>
           </v-card-text>
           <v-card-actions>
