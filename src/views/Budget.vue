@@ -108,7 +108,7 @@
                 <h2>Categories Graph</h2>
               </v-card-title>
               <v-card-text>
-                <apexchart type=pie width=380 :options="chartOptions" :series="series" />
+                <chart-demo/>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -144,12 +144,12 @@
 <script>
 import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners';
-import VueApexCharts from 'vue-apexcharts';
+import ChartDemo from "../components/Budget/ChartDemo";
 
 export default {
   components: {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
-    "apexchart": VueApexCharts,
+    "chart-demo": ChartDemo
   },
   data() {
     return {
