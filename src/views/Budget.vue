@@ -26,7 +26,7 @@
               <v-card-text>
                 <v-layout>
                   <v-flex><h2>Account</h2></v-flex>
-                  <v-flex><account-selector :selectedAccount="selectedAccount"/></v-flex>
+                  <v-flex><account-selector :selectedAccount="selectedAccount" :accounts="accounts"/></v-flex>
                 </v-layout>
               </v-card-text>
             </v-card>
