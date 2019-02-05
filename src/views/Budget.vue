@@ -217,7 +217,7 @@ export default {
           .filter(op => op.category.isIncome)
           .map(op => {
             return {
-              name: op.category.name,
+              name: op.name,
               category: op.category.name,
               date: op.date,
               sum: Math.abs(op.sum)
