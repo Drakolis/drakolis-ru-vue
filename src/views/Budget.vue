@@ -223,7 +223,7 @@ export default {
               sum: Math.abs(op.sum)
             }
           })
-        : 0;
+        : [];
     },
     expenses() {
       return this.operations && this.operations.length && this.categories && this.categories.length
@@ -241,7 +241,7 @@ export default {
               sum: Math.abs(op.sum)
             }
           })
-        : 0;
+        : [];
     }
   }
 }
