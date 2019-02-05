@@ -23,12 +23,11 @@
           <v-flex xs12 class="mb-2">
 
             <v-card>
-            <v-card-actions>
-            </v-card-actions>
-              <v-card-title primary-title class="py-1">
-                <h2>Current Budget</h2>
-              </v-card-title>
               <v-card-text>
+                <v-layout>
+                  <v-flex><h2>Account</h2></v-flex>
+                  <v-flex><account-selector :selectedAccount="selectedAccount"/></v-flex>
+                </v-layout>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -43,6 +42,10 @@
                 <v-btn flat color="orange">
                   Add Expense
                   <v-icon class="ml-2">remove</v-icon>
+                </v-btn>
+                <v-btn flat color="blue" v-if="multipleAccountsFeature">
+                  Add Transfer
+                  <v-icon class="ml-2">subdirectory_arrow_right</v-icon>
                 </v-btn>
               </v-card-actions>
               <v-card-title primary-title class="py-1">
@@ -145,16 +148,20 @@
 import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners';
 import ChartDemo from "../components/Budget/ChartDemo";
+import AccountSelector from "../components/Budget/AccountSelector";
 
 export default {
   components: {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
-    "chart-demo": ChartDemo
+    "chart-demo": ChartDemo,
+    "account-selector": AccountSelector
   },
   data() {
     return {
       pageLoaded: false,
       pageError: null,
+      accounts: null,
+      selectedAccountId: 1,
       headers: [
         {
           value: 'reason',
@@ -220,21 +227,24 @@ export default {
     }
   },
   mounted() {
-    /*
-    this.$http.get(getFamilyDataURL)
-      .then(res => {
-        this.personData = res.body.family;
+    Promise.all([
+      this.$api.budget.account.show(1)
+    ]).then(
+      res => {
+        this.accounts = [res[0].body.data];
         this.pageLoaded = true;
-      })
-      .catch(res => {
-        this.pageError = res;
-        this.pageLoaded = true;
-      });
-    */
-    setTimeout(() => {
-      this.personData = require('../mock').family;
-      this.pageLoaded = true;
-    }, 1000 + 2000 * Math.random());
+      }
+    );
+
+  },
+  computed: {
+    multipleAccountsFeature() {
+      return this.$store.state.features.multipleAccounts
+        && this.$store.state.features.multipleAccounts.enabled;
+    },
+    selectedAccount() {
+      return this.accounts && this.accounts.find(acc => acc.id === this.selectedAccountId);
+    }
   }
 }
 </script>

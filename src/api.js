@@ -16,6 +16,16 @@ const METHOD_URLS = {
     show(id) {
       return API_HOST + `api/v1/show/${id}`;
     }
+  },
+  budget: {
+    account: {
+      showAll() {
+        return API_HOST + `api/v1/budget/accounts`;
+      },
+      show(id) {
+        return API_HOST + `api/v1/budget/accounts/${id}`;
+      }
+    }
   }
 };
 
@@ -30,13 +40,13 @@ export default vue => {
   const setAuthCookie = (jwt, timeoutSeconds = 30 * 24 * 60 * 60) => {
     vue.$cookies.set(authCookieName, jwt, timeoutSeconds + "s");
   };
-  const setAuthHeaders = () => {
+  const getCookie = () => {
     return vue.$cookies.get(authCookieName);
   };
   const setSettings = () => {
     return {
       headers: {
-        Authorization: setAuthHeaders()
+        Authorization: "Bearer " + getCookie()
       }
     };
   };
@@ -51,6 +61,9 @@ export default vue => {
     vue.$store.commit("signOut");
     return true;
   };
+
+  const cookieValue = getCookie();
+  if (cookieValue) signIn(cookieValue);
 
   return {
     user: {
@@ -76,17 +89,24 @@ export default vue => {
       signOut,
 
       showMe() {
-        vue.$http
+        return vue.$http
           .get(METHOD_URLS.user.showMe(), setSettings())
-          .then(res => res.body)
           .catch(() => signOut());
       },
 
       show(id) {
-        vue.$http
+        return vue.$http
           .get(METHOD_URLS.user.show(id), setSettings())
-          .then(res => res.body)
           .catch(() => signOut());
+      }
+    },
+    budget: {
+      account: {
+        show(id) {
+          return vue.$http
+            .get(METHOD_URLS.budget.account.show(id), setSettings())
+            .catch(() => {});
+        }
       }
     }
   };
