@@ -104,7 +104,7 @@
               <v-card-actions>
               </v-card-actions>
               <v-card-title primary-title class="py-1">
-                <h2>Categories Graph</h2>
+                <h2>Expenses Categories Graph</h2>
               </v-card-title>
               <v-card-text>
                 <chart-demo/>
@@ -235,7 +235,7 @@ export default {
           .filter(op => !op.category.isIncome)
           .map(op => {
             return {
-              name: op.category.name,
+              name: op.name,
               category: op.category.name,
               date: op.date,
               sum: Math.abs(op.sum)
