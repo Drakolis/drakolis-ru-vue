@@ -24,6 +24,14 @@ const METHOD_URLS = {
       },
       show(id) {
         return API_HOST + `api/v1/budget/accounts/${id}`;
+      },
+      showOperations(id) {
+        return API_HOST + `api/v1/budget/accounts/${id}/operations`;
+      }
+    },
+    categories: {
+      showAll() {
+        return API_HOST + `api/v1/budget/categories`;
       }
     }
   }
@@ -102,9 +110,26 @@ export default vue => {
     },
     budget: {
       account: {
+        showAll() {
+          return vue.$http
+            .get(METHOD_URLS.budget.account.showAll(), setSettings())
+            .catch(() => {});
+        },
         show(id) {
           return vue.$http
             .get(METHOD_URLS.budget.account.show(id), setSettings())
+            .catch(() => {});
+        },
+        showOperations(id) {
+          return vue.$http
+            .get(METHOD_URLS.budget.account.showOperations(id), setSettings())
+            .catch(() => {});
+        }
+      },
+      categories: {
+        showAll() {
+          return vue.$http
+            .get(METHOD_URLS.budget.categories.showAll(), setSettings())
             .catch(() => {});
         }
       }

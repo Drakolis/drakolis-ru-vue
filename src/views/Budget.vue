@@ -54,27 +54,6 @@
 
               <v-card-text>
                 <h3 class="mb-2">
-                  Income
-                </h3>
-                <v-data-table
-                  :headers="headers"
-                  :items="income"
-                  class="elevation-1"
-                  hide-actions
-                >
-                  <template slot="items" slot-scope="props">
-                    <td>{{ props.item.reason }}</td>
-                    <td>{{ props.item.category }}</td>
-                    <td>{{ props.item.owner }}</td>
-                    <td>{{ props.item.currency }}</td>
-                    <td>{{ props.item.date }}</td>
-                    <td>{{ props.item.sum }}</td>
-                  </template>
-                </v-data-table>
-              </v-card-text>
-
-              <v-card-text>
-                <h3 class="mb-2">
                   Expenses
                 </h3>
                 <v-data-table
@@ -84,11 +63,28 @@
                   hide-actions
                 >
                   <template slot="items" slot-scope="props">
-                    <td>{{ props.item.reason }}</td>
+                    <td>{{ props.item.name }}</td>
                     <td>{{ props.item.category }}</td>
-                    <td>{{ props.item.owner }}</td>
-                    <td>{{ props.item.currency }}</td>
-                    <td>{{ props.item.date }}</td>
+                    <td>{{ formatTime(props.item.date) }}</td>
+                    <td>{{ props.item.sum }}</td>
+                  </template>
+                </v-data-table>
+              </v-card-text>
+
+              <v-card-text>
+                <h3 class="mb-2">
+                  Income
+                </h3>
+                <v-data-table
+                  :headers="headers"
+                  :items="income"
+                  class="elevation-1"
+                  hide-actions
+                >
+                  <template slot="items" slot-scope="props">
+                    <td>{{ props.item.name }}</td>
+                    <td>{{ props.item.category }}</td>
+                    <td>{{ formatTime(props.item.date) }}</td>
                     <td>{{ props.item.sum }}</td>
                   </template>
                 </v-data-table>
@@ -115,28 +111,6 @@
               </v-card-text>
             </v-card>
           </v-flex>
-          <v-flex xs12 class="mb-2">
-            <v-card>
-              <v-card-actions>
-              </v-card-actions>
-              <v-card-title primary-title class="py-1">
-                <h2>Income/Expenses Graph</h2>
-              </v-card-title>
-              <v-card-text>
-              </v-card-text>
-            </v-card>
-          </v-flex>
-          <v-flex xs12 class="mb-2">
-            <v-card>
-              <v-card-actions>
-              </v-card-actions>
-              <v-card-title primary-title class="py-1">
-                <h2>Expenses Heatmap</h2>
-              </v-card-title>
-              <v-card-text>
-              </v-card-text>
-            </v-card>
-          </v-flex>
         </v-layout>
       </v-flex>
 
@@ -149,6 +123,7 @@ import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners';
 import ChartDemo from "../components/Budget/ChartDemo";
 import AccountSelector from "../components/Budget/AccountSelector";
+import moment from "moment";
 
 export default {
   components: {
@@ -160,24 +135,20 @@ export default {
     return {
       pageLoaded: false,
       pageError: null,
+
       accounts: null,
+      operations: null,
+      categories: null,
+
       selectedAccountId: 1,
       headers: [
         {
-          value: 'reason',
-          text: 'Reason'
+          value: 'name',
+          text: 'Name'
         },
         {
           value: 'category',
           text: 'Category'
-        },
-        {
-          value: 'owner',
-          text: 'Owner'
-        },
-        {
-          value: 'currency',
-          text: 'Currency'
         },
         {
           value: 'date',
@@ -188,54 +159,45 @@ export default {
           text: 'Sum'
         },
       ],
-      income: [
-        {
-          reason: 'Testing',
-          category: 'Test',
-          owner: 'Tester',
-          currency: 'EUR',
-          date: 'Today',
-          sum: 100,
-        },
-        {
-          reason: 'Testing',
-          category: 'Test',
-          owner: 'Tester',
-          currency: 'EUR',
-          date: 'Today',
-          sum: 100,
-        }
-      ],
-      expenses: [
-        {
-          reason: 'Testing',
-          category: 'Test',
-          owner: 'Tester',
-          currency: 'EUR',
-          date: 'Today',
-          sum: 100,
-        },
-        {
-          reason: 'Testing',
-          category: 'Test',
-          owner: 'Tester',
-          currency: 'EUR',
-          date: 'Today',
-          sum: 100,
-        }
-      ],
     }
   },
   mounted() {
     Promise.all([
-      this.$api.budget.account.show(1)
+      this.updateAccounts(),
+      this.updateCategories(),
+      this.updateOperations()
     ]).then(
-      res => {
-        this.accounts = [res[0].body.data];
+      () => {
         this.pageLoaded = true;
       }
     );
 
+  },
+  methods: {
+    updateAccounts() {
+      if (this.pageLoaded)
+        this.pageLoaded = false;
+
+      return this.$api.budget.account.showAll()
+        .then(res => this.accounts = res.body.data);
+    },
+    updateCategories() {
+      if (this.pageLoaded)
+        this.pageLoaded = false;
+
+      return this.$api.budget.categories.showAll()
+        .then(res => this.categories = res.body.data);
+    },
+    updateOperations() {
+      if (this.pageLoaded)
+        this.pageLoaded = false;
+
+      return this.$api.budget.account.showOperations(this.selectedAccountId)
+        .then(res => this.operations = res.body.data);
+    },
+    formatTime(time) {
+      return moment(time).format('LLL');
+    }
   },
   computed: {
     multipleAccountsFeature() {
@@ -244,6 +206,42 @@ export default {
     },
     selectedAccount() {
       return this.accounts && this.accounts.find(acc => acc.id === this.selectedAccountId);
+    },
+    income() {
+      return this.operations && this.operations.length && this.categories && this.categories.length
+        ? this.operations
+          .map(op => {
+            op.category = this.categories.find(cat => cat.id === op.categoryId);
+            return op;
+          })
+          .filter(op => op.category.isIncome)
+          .map(op => {
+            return {
+              name: op.category.name,
+              category: op.category.name,
+              date: op.date,
+              sum: Math.abs(op.sum)
+            }
+          })
+        : 0;
+    },
+    expenses() {
+      return this.operations && this.operations.length && this.categories && this.categories.length
+        ? this.operations
+          .map(op => {
+            op.category = this.categories.find(cat => cat.id === op.categoryId);
+            return op;
+          })
+          .filter(op => !op.category.isIncome)
+          .map(op => {
+            return {
+              name: op.category.name,
+              category: op.category.name,
+              date: op.date,
+              sum: Math.abs(op.sum)
+            }
+          })
+        : 0;
     }
   }
 }
