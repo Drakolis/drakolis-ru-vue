@@ -19,13 +19,13 @@ const METHOD_URLS = {
   },
   budget: {
     account: {
-      showAll() {
+      index() {
         return API_HOST + `api/v1/budget/accounts`;
       },
-      show(id) {
+      item(id) {
         return API_HOST + `api/v1/budget/accounts/${id}`;
       },
-      showOperations(id) {
+      operations(id) {
         return API_HOST + `api/v1/budget/accounts/${id}/operations`;
       }
     },
@@ -112,17 +112,22 @@ export default vue => {
       account: {
         showAll() {
           return vue.$http
-            .get(METHOD_URLS.budget.account.showAll(), setSettings())
+            .get(METHOD_URLS.budget.account.index(), setSettings())
             .catch(() => {});
         },
         show(id) {
           return vue.$http
-            .get(METHOD_URLS.budget.account.show(id), setSettings())
+            .get(METHOD_URLS.budget.account.item(id), setSettings())
+            .catch(() => {});
+        },
+        delete(id) {
+          return vue.$http
+            .delete(METHOD_URLS.budget.account.item(id), setSettings())
             .catch(() => {});
         },
         showOperations(id) {
           return vue.$http
-            .get(METHOD_URLS.budget.account.showOperations(id), setSettings())
+            .get(METHOD_URLS.budget.account.operations(id), setSettings())
             .catch(() => {});
         }
       },

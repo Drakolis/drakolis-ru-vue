@@ -115,6 +115,7 @@
       </v-flex>
 
     </v-layout>
+    <popups :updateAccounts="updateAccounts"/>
   </v-container>
 </template>
 
@@ -123,13 +124,15 @@ import {API_HOST} from "../config/index";
 import { BreedingRhombusSpinner } from 'epic-spinners';
 import ChartDemo from "../components/Budget/ChartDemo";
 import AccountSelector from "../components/Budget/AccountSelector";
+import Popups from "@/components/Budget/Popups"
 import moment from "moment";
 
 export default {
   components: {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
     "chart-demo": ChartDemo,
-    "account-selector": AccountSelector
+    "account-selector": AccountSelector,
+    "popups": Popups
   },
   data() {
     return {
@@ -140,7 +143,7 @@ export default {
       operations: null,
       categories: null,
 
-      selectedAccountId: 1,
+      selectedAccountId: 2,
       headers: [
         {
           value: 'name',
@@ -164,8 +167,7 @@ export default {
   mounted() {
     Promise.all([
       this.updateAccounts(),
-      this.updateCategories(),
-      this.updateOperations()
+      this.updateCategories()
     ]).then(
       () => {
         this.pageLoaded = true;
@@ -175,23 +177,21 @@ export default {
   },
   methods: {
     updateAccounts() {
-      if (this.pageLoaded)
-        this.pageLoaded = false;
-
       return this.$api.budget.account.showAll()
-        .then(res => this.accounts = res.body.data);
+        .then(res => {
+          this.accounts = res.body.data;
+          this.selectedAccountId = (
+            this.selectedAccountId &&
+            this.accounts.find(account => account.id === this.selectedAccountId)
+          ) ? this.selectedAccountId : this.accounts[0].id;
+          this.updateOperations();
+          });
     },
     updateCategories() {
-      if (this.pageLoaded)
-        this.pageLoaded = false;
-
       return this.$api.budget.categories.showAll()
         .then(res => this.categories = res.body.data);
     },
     updateOperations() {
-      if (this.pageLoaded)
-        this.pageLoaded = false;
-
       return this.$api.budget.account.showOperations(this.selectedAccountId)
         .then(res => this.operations = res.body.data);
     },

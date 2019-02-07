@@ -41,7 +41,7 @@
         <v-list-tile
           avatar
           @click="() => {}"
-          v-for="account in accounts"
+          v-for="account in accountsSorted"
           :key="account.id"
           class="mb-2"
         >
@@ -64,10 +64,10 @@
 
           <v-list-tile-action>
             <v-btn
-              @click="() => {}"
+              @click="deleteAccount(account)"
               icon
               flat
-              color="red"
+              color="red darken-3"
             >
               <v-icon>delete</v-icon>
             </v-btn>
@@ -98,7 +98,7 @@
 
 <script>
 import Colors from '@/Colors.js';
-
+import {UI_EVENTS} from '@/bus.js';
 const ALLOWED_CURRENCY = ['USD', 'EUR', 'RUR'];
 
 export default {
@@ -125,6 +125,26 @@ export default {
         case 'RUR':
           return 'mdi-currency-rub';
       }
+    },
+    deleteAccount(account) {
+      this.menu = false;
+      this.$bus.$emit(UI_EVENTS.BUDGET.OPEN_DELETE_ACCOUNT, account);
+    }
+  },
+  computed: {
+    accountsSorted() {
+      const ar = this.accounts.sort((a,b) => a.id === this.selectedAccount.id ? -1 : 1);
+      console.log(ar.map(e => e.id));
+      return ar;
+    }
+  },
+  watch: {
+    accounts: function(newVal, oldVal) { // watch it
+      console.log('Updating')
+      this.$forceUpdate();
+    },
+    selectedAccount: function(newVal, oldVal) { // watch it
+      this.$forceUpdate();
     }
   }
 }
