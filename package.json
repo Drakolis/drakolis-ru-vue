@@ -7,7 +7,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "bash scripts/deploy.bash"
+    "deploy": "bash scripts/deploy.bash",
+    "deploy-heroku": "bash scripts/deploy-heroku.bash"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",
