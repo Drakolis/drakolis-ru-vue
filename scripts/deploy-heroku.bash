@@ -28,7 +28,8 @@ git commit -am "Deploy"
 git push heroku master
 echo '[6] Completed'
 
-echo '[7] Clean up working directory...'
-rm -rf dist
-rm -rf drakolis-ru-new
+echo '[7] Cleaning up working directory...'
+cd ../
+rm -rf dist/
+rm -rf drakolis-ru-new/
 echo '[7] Completed'
