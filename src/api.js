@@ -1,6 +1,5 @@
 import { UI_EVENTS } from "./bus.js";
-
-const API_HOST = "http://localhost:8000/";
+import { API_HOST } from "@/config";
 
 const METHOD_URLS = {
   user: {

@@ -1,3 +1,3 @@
-export const DEBUG = true;
-export const UI_HOST = "http://drakolis-ru.herokuapp.com/";
-export const API_HOST = "http://drakolis-ru-api.herokuapp.com/";
+export const DEBUG = false;
+export const UI_HOST = "https://drakolis.pw/";
+export const API_HOST = "https://api.drakolis.pw/";
