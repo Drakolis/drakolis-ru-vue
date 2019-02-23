@@ -5,8 +5,8 @@
     >
       <v-flex>
         <div class="text-xs-center">
-          <p class="drakolis-font display-4 my-4">{{myData.name}}</p>
-          <small class="display-2 font-weight-light">{{myData.title}}</small>
+          <p :class="'drakolis-font ' + nameSizeClass">{{myData.name}}</p>
+          <small :class="'font-weight-light ' + titleSizeClass">{{myData.title}}</small>
         </div>
       </v-flex>
 
@@ -197,6 +197,14 @@ export default {
   data() {
     return {
       myData: {}
+    }
+  },
+  computed: {
+    nameSizeClass() {
+      return [/*'sm',*/ 'xs'].includes(this.$vuetify.breakpoint.name) ? 'my-3 display-3' : 'my-4 display-4';
+    },
+    titleSizeClass() {
+      return [/*'sm',*/ 'xs'].includes(this.$vuetify.breakpoint.name) ? 'display-2' : 'display-1';
     }
   },
   methods: {
