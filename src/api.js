@@ -45,15 +45,16 @@ export default vue => {
   }
 
   const setAuthCookie = (jwt, timeoutSeconds = 30 * 24 * 60 * 60) => {
-    vue.$cookies.set(authCookieName, jwt, timeoutSeconds + "s");
+    if (jwt) vue.$cookies.set(authCookieName, jwt, timeoutSeconds + "s");
+    else vue.$cookies.remove(authCookieName);
   };
   const getCookie = () => {
     return vue.$cookies.get(authCookieName);
   };
-  const setSettings = () => {
+  const setSettings = (cookie = null) => {
     return {
       headers: {
-        Authorization: "Bearer " + getCookie()
+        Authorization: "Bearer " + cookie || getCookie()
       }
     };
   };
@@ -69,10 +70,14 @@ export default vue => {
     return true;
   };
 
-  //const cookieValue = getCookie();
-  //if (cookieValue) signIn(cookieValue);
+  const cookieValue = getCookie();
+  if (cookieValue)
+    vue.$http
+      .get(METHOD_URLS.user.showMe(), setSettings(cookieValue))
+      .then(() => signIn(cookieValue))
+      .catch(() => signOut());
 
-  return {
+  const api = {
     user: {
       signIn(email, password) {
         vue.$http
@@ -139,4 +144,6 @@ export default vue => {
       }
     }
   };
+
+  return api;
 };
