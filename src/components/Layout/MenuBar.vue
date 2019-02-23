@@ -1,4 +1,4 @@
-<template>
+PW<template>
   <v-toolbar app clipped-right>
     <v-toolbar-title class="headline text-uppercase">
       <span class="drakolis-font">Drakolis</span>

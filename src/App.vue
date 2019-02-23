@@ -1,7 +1,7 @@
 <template>
   <v-app dark class="app-scroll-fix">
     <side-sheet v-if="$store.state.loggedIn"/>
-
+    <menu-bar/>
     <v-content>
       <router-view/>
     </v-content>
@@ -12,12 +12,14 @@
 <script>
 import { UI_EVENTS } from "./bus.js";
 import SideSheet from "./components/Layout/SideSheet";
+import MenuBar from "./components/Layout/MenuBar"
 import Notifications from "./components/Layout/Notifications";
 
 export default {
   name: "App",
   components: {
     "side-sheet": SideSheet,
+    "menu-bar": MenuBar,
     notifications: Notifications
   },
   mounted() {

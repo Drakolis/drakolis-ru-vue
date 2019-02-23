@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {UI_EVENTS} from "../bus.js";
+import {UI_EVENTS} from "@/bus.js";
 
 export default {
   data() {

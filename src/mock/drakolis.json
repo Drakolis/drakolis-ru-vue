@@ -19,14 +19,15 @@
     ["Uncertainty", ":question:"]
   ],
   "languages": [
-    ["Russian", ":ru:", "Native"],
-    ["English", ":uk:", "Almost Perfect"],
+    ["Russian", ":flag-ru:", "Native"],
+    ["English", ":flag-gb:", "Almost Perfect"],
     ["Dovahzul (Dragon Language)", ":dragon_face:", "Good"],
-    ["Spanish", ":es:", "A Bit"]
+    ["Spanish", ":flag-es:", "A Bit"]
   ],
   "skills": [
     ["C#", "hzhz", ["Asp.NET", "CodedUI", "Selenium", "Unity"], false],
     ["JavaScript", "hzhz", ["Node.js", "React", "Vue", "TypeScript"], false],
+    ["Elixir", "", ["Phoenix"], false],
     ["SQL", "hzhz", ["MySQL", "PostgreSQL", "SQLite", "Oracle"], false],
     ["Java", "", ["Selenium", "Cucumber", "Minecraft Sources"], false],
     ["Python", "", ["Flask", "Django", "Scientific Projects"], false],
@@ -65,7 +66,7 @@
     },
     {
       "type": "mail",
-      "url": "mailto:drakolis@drakolis.ru"
+      "url": "mailto:mika.drakolis@gmail.com"
     }
   ],
   "timeline": [
