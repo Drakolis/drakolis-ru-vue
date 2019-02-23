@@ -18,7 +18,7 @@ PW<template>
       <v-btn flat icon slot="activator">
         <v-icon>input</v-icon>
       </v-btn>
-      <login-form switchMethod="loginFormSwitch"/>
+      <login-form :switchMethod="loginFormSwitch"/>
     </v-menu>
 
     <v-tooltip bottom v-if="$store.state.loggedIn">
