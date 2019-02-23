@@ -69,8 +69,8 @@ export default vue => {
     return true;
   };
 
-  const cookieValue = getCookie();
-  if (cookieValue) signIn(cookieValue);
+  //const cookieValue = getCookie();
+  //if (cookieValue) signIn(cookieValue);
 
   return {
     user: {

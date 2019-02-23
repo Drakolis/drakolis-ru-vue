@@ -40,8 +40,9 @@ export default {
   methods: {
     singInSubmit() {
       this.$api.user.signIn(this.login, this.password);
-      switchMethod();
-    }
+      this.switchMethod();
+    },
+
   }
 };
 </script>
