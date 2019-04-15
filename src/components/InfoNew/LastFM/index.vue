@@ -1,6 +1,7 @@
 <template>
   <v-card>
     <v-toolbar
+      dense
       color="red darken-3">
       <v-toolbar-title>Last.FM</v-toolbar-title>
 
