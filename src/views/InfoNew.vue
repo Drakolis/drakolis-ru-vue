@@ -169,103 +169,108 @@
         <v-divider></v-divider>
       </v-flex>
 
+      <v-flex xs12>
+        <v-flex xs12 sm6>
+          <last-fm :account="myData.apis.find(i => i.type === 'lastfm').param"></last-fm>
+        </v-flex>
+      </v-flex>
+
       <v-flex>
-        <v-timeline
-          align-top
-          :dense="this.$vuetify.breakpoint.name === 'xs'"
-        >
-          <expandable-timeline-item v-for="entry in myData.timeline" :entry="entry" :key="entry.name"/>
-        </v-timeline>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import {API_HOST} from "../config/index";
-import { BreedingRhombusSpinner } from 'epic-spinners'
-import TimelineItemExpandable from "../components/InfoNew/TimelineItemExpandable"
-import DrakolisEmoji from "../components/DrakolisEmoji"
+import { API_HOST } from "../config/index";
+import { BreedingRhombusSpinner } from "epic-spinners";
+import TimelineItemExpandable from "../components/InfoNew/TimelineItemExpandable";
+import DrakolisEmoji from "../components/DrakolisEmoji";
+import LastFM from "@/components/InfoNew/LastFM";
 
 const getFamilyDataURL = API_HOST + "/family";
 export default {
   components: {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
     "expandable-timeline-item": TimelineItemExpandable,
-    "drakolis-emoji": DrakolisEmoji
+    "drakolis-emoji": DrakolisEmoji,
+    "last-fm": LastFM
   },
   data() {
     return {
       myData: {}
-    }
+    };
   },
   computed: {
     nameSizeClass() {
-      return [/*'sm',*/ 'xs'].includes(this.$vuetify.breakpoint.name) ? 'my-3 display-3' : 'my-4 display-4';
+      return [/*'sm',*/ "xs"].includes(this.$vuetify.breakpoint.name)
+        ? "my-3 display-3"
+        : "my-4 display-4";
     },
     titleSizeClass() {
-      return [/*'sm',*/ 'xs'].includes(this.$vuetify.breakpoint.name) ? 'display-2' : 'display-1';
+      return [/*'sm',*/ "xs"].includes(this.$vuetify.breakpoint.name)
+        ? "display-2"
+        : "display-1";
     }
   },
   methods: {
-    getContactOnClickAction({url, type}) {
-      if (url.indexOf('http')>-1){
-          window.open(url, '_blank');
-          window.focus();
+    getContactOnClickAction({ url, type }) {
+      if (url.indexOf("http") > -1) {
+        window.open(url, "_blank");
+        window.focus();
       } else {
-          window.location.href = url;
+        window.location.href = url;
       }
     },
     getContactIcon(type) {
-      if (type === 'mail')
-        return `fas fa-envelope`;
+      if (type === "mail") return `fas fa-envelope`;
       return `fab fa-${type}`;
     },
     getContactColor(type) {
       switch (type) {
         case "vk":
-          return '#4a76a8';
+          return "#4a76a8";
         case "facebook":
-          return '#4267b2';
+          return "#4267b2";
         case "twitter":
-          return '#1da1f2';
+          return "#1da1f2";
         case "deviantart":
-          return '#475c4d';
+          return "#475c4d";
         case "linkedin":
-          return '#0073b1';
+          return "#0073b1";
         case "telegram":
-          return '#5682a3';
+          return "#5682a3";
         case "skype":
-          return '#1686d9';
+          return "#1686d9";
         case "github":
-          return '#24292e';
+          return "#24292e";
         case "whatsapp":
-          return '#1ebea5';
+          return "#1ebea5";
         case "mail":
-          return '#00796B';
+          return "#00796B";
         case "instagramm":
-          return '#303030';
+          return "#303030";
         case "discord":
           return "#7289da";
         default:
-          return 'secondary';
+          return "secondary";
       }
     },
     getContactTooltip(type) {
-        switch (type) {
-            case "linkedin":
-                return 'Linked in';
-            case "vk":
-                return 'VK';
-            case "github":
-                return 'GitHub';
-            default:
-                return type;
-        }
+      switch (type) {
+        case "linkedin":
+          return "Linked in";
+        case "vk":
+          return "VK";
+        case "github":
+          return "GitHub";
+        default:
+          return type;
+      }
     }
   },
   mounted() {
-    this.myData = require('../mock/drakolis');
+    this.myData = require("../mock/drakolis");
   }
-}
+};
 </script>

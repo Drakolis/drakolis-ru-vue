@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {UI_EVENTS} from "@/bus.js";
+import { UI_EVENTS } from "@/bus.js";
 
 export default {
   data() {
@@ -60,11 +60,16 @@ export default {
   computed: {
     displayApp() {
       switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return false
-        case 'sm': return false
-        case 'md': return false
-        case 'lg': return true
-        case 'xl': return true
+        case "xs":
+          return false;
+        case "sm":
+          return false;
+        case "md":
+          return false;
+        case "lg":
+          return true;
+        case "xl":
+          return true;
       }
     },
     settings() {
@@ -88,7 +93,9 @@ export default {
     }
   },
   mounted() {
-    this.$bus.$on(UI_EVENTS.SETTINGS_TOGGLE, () => {this.show = !this.show});
+    this.$bus.$on(UI_EVENTS.SETTINGS_TOGGLE, () => {
+      this.show = !this.show;
+    });
   }
-}
+};
 </script>

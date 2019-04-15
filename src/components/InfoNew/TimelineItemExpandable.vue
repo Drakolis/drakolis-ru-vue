@@ -41,14 +41,13 @@
 export default {
   data() {
     return {
-      open: false,
-    }
+      open: false
+    };
   },
-  props: ['entry'],
+  props: ["entry"],
   methods: {
     buttonClick() {
-      if(!this.isExpandable)
-        return;
+      if (!this.isExpandable) return;
       this.open = !this.open;
     },
     // enter: function(el, done) {
@@ -58,32 +57,31 @@ export default {
     //   $(el).slideUp(150, done);
     // },
     beforeEnter: function(el) {
-      el.style.height = '0';
+      el.style.height = "0";
     },
     enter: function(el) {
-      el.style.height = (el.scrollHeight + 20) + 'px';
+      el.style.height = el.scrollHeight + 20 + "px";
     },
     beforeLeave: function(el) {
-      el.style.height = (el.scrollHeight + 20) + 'px';
+      el.style.height = el.scrollHeight + 20 + "px";
     },
     leave: function(el) {
-      el.style.height = '0';
+      el.style.height = "0";
     }
   },
   computed: {
     buttonIcon() {
-      if(!this.isExpandable)
-        return;
-      return this.open ? 'remove' : 'add';
+      if (!this.isExpandable) return;
+      return this.open ? "remove" : "add";
     },
     dates() {
-      return `${this.entry.dateFrom} - ${this.entry.dateTo || 'Present'}`;
+      return `${this.entry.dateFrom} - ${this.entry.dateTo || "Present"}`;
     },
     isExpandable() {
       return this.entry.points.length;
     }
   }
-}
+};
 </script>
 
 <style>
@@ -92,4 +90,3 @@ export default {
   overflow: hidden;
 }
 </style>
-

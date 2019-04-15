@@ -5,60 +5,71 @@
 </template>
 
 <script>
-  import BarChart from './Charts/BarChart.js'
-  import Colors from '../../Colors.js';
+import BarChart from "./Charts/BarChart.js";
+import Colors from "../../Colors.js";
 
-  export default {
-    components: {
-      BarChart
-    },
-    data () {
-      return {
-        datacollection: null,
-        options: {
-          legend: {
-            display: false,
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                fontColor: Colors.grey.lighten2
-              },
-              gridLines: {
-                color: Colors.grey.darken2,
-              }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: Colors.grey.lighten2
-              },
-              gridLines: {
-                color: Colors.grey.darken2,
-              }
-            }]
-          }
-        }
-      }
-    },
-    mounted () {
-      this.fillData()
-    },
-    methods: {
-      fillData () {
-        this.datacollection = {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [
+export default {
+  components: {
+    BarChart
+  },
+  data() {
+    return {
+      datacollection: null,
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [
             {
-              label: 'February',
-              data: [this.getRandomInt(),this.getRandomInt(),this.getRandomInt(),this.getRandomInt(),this.getRandomInt(),this.getRandomInt()],
-              backgroundColor: Object.values(Colors).map(clr => clr.base)
+              ticks: {
+                fontColor: Colors.grey.lighten2
+              },
+              gridLines: {
+                color: Colors.grey.darken2
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: Colors.grey.lighten2
+              },
+              gridLines: {
+                color: Colors.grey.darken2
+              }
             }
           ]
         }
-      },
-      getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       }
+    };
+  },
+  mounted() {
+    this.fillData();
+  },
+  methods: {
+    fillData() {
+      this.datacollection = {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+          {
+            label: "February",
+            data: [
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt()
+            ],
+            backgroundColor: Object.values(Colors).map(clr => clr.base)
+          }
+        ]
+      };
+    },
+    getRandomInt() {
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     }
   }
+};
 </script>

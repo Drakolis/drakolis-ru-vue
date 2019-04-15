@@ -97,9 +97,9 @@
 </template>
 
 <script>
-import Colors from '@/Colors.js';
-import {UI_EVENTS} from '@/bus.js';
-const ALLOWED_CURRENCY = ['USD', 'EUR', 'RUR'];
+import Colors from "@/Colors.js";
+import { UI_EVENTS } from "@/bus.js";
+const ALLOWED_CURRENCY = ["USD", "EUR", "RUR"];
 
 export default {
   data() {
@@ -114,16 +114,16 @@ export default {
       }
     };
   },
-  props: ['selectedAccount', 'accounts'],
+  props: ["selectedAccount", "accounts"],
   methods: {
     currencySymbol(currencyCode) {
-      switch(currencyCode) {
-        case 'USD':
-          return 'mdi-currency-usd';
-        case 'EUR':
-          return 'mdi-currency-eur';
-        case 'RUR':
-          return 'mdi-currency-rub';
+      switch (currencyCode) {
+        case "USD":
+          return "mdi-currency-usd";
+        case "EUR":
+          return "mdi-currency-eur";
+        case "RUR":
+          return "mdi-currency-rub";
       }
     },
     deleteAccount(account) {
@@ -133,19 +133,23 @@ export default {
   },
   computed: {
     accountsSorted() {
-      const ar = this.accounts.sort((a,b) => a.id === this.selectedAccount.id ? -1 : 1);
+      const ar = this.accounts.sort(
+        (a, b) => (a.id === this.selectedAccount.id ? -1 : 1)
+      );
       console.log(ar.map(e => e.id));
       return ar;
     }
   },
   watch: {
-    accounts: function(newVal, oldVal) { // watch it
-      console.log('Updating')
+    accounts: function(newVal, oldVal) {
+      // watch it
+      console.log("Updating");
       this.$forceUpdate();
     },
-    selectedAccount: function(newVal, oldVal) { // watch it
+    selectedAccount: function(newVal, oldVal) {
+      // watch it
       this.$forceUpdate();
     }
   }
-}
+};
 </script>

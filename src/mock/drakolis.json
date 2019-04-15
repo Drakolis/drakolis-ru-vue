@@ -25,13 +25,13 @@
     ["Spanish", ":flag-es:", "A Bit"]
   ],
   "skills": [
-    ["C#", "hzhz", ["Asp.NET", "CodedUI", "Selenium", "Unity"], false],
-    ["JavaScript", "hzhz", ["Node.js", "React", "Vue", "TypeScript"], false],
-    ["Elixir", "", ["Phoenix"], false],
-    ["SQL", "hzhz", ["MySQL", "PostgreSQL", "SQLite", "Oracle"], false],
-    ["Java", "", ["Selenium", "Cucumber", "Minecraft Sources"], false],
+    ["C#", "", ["Asp.NET", "CodedUI", "Selenium", "Unity"], false],
+    ["JavaScript", "", ["Node.js", "React", "Vue", "TypeScript"], false],
+    ["PHP", "", ["Laravel", "PHPixie", "Yii"], false],
+    ["SQL", "", ["MySQL", "PostgreSQL", "SQLite", "Oracle"], false],
     ["Python", "", ["Flask", "Django", "Scientific Projects"], false],
-    ["PHP", "", ["Laravel", "PHPixie", "Yii"], false]
+    ["Java", "", ["Selenium", "Cucumber", "Minecraft Sources"], false],
+    ["Elixir", "", ["Phoenix"], false]
   ],
 
   "location": "Russia, Saint-Petersburg",
@@ -67,89 +67,6 @@
     {
       "type": "mail",
       "url": "mailto:mika.drakolis@gmail.com"
-    }
-  ],
-  "timeline": [
-    {
-      "name": "Credit Analyst",
-      "company": {
-        "name": "SKB-Bank",
-        "url": "",
-        "about": ""
-      },
-      "points": [],
-      "color": "teal darken-4",
-      "dateFrom": "07.2016",
-      "dateTo": "12.2016"
-    },
-    {
-      "name": "Middle QA Automation Engineer (C#)",
-      "company": {
-        "name": "MTS",
-        "url": "",
-        "about": ""
-      },
-      "points": [
-        "UI tests development and support (C# + Coded UI)",
-        "SOAP-Api tests development and support (C#)",
-        "Test run monitor board development and support (C# + ASP.Net)",
-        "Testing environment support",
-        "Test cases analysys"
-      ],
-      "color": "red darken-1",
-      "dateFrom": "12.2016",
-      "dateTo": "12.2017"
-    },
-    {
-      "name": "Middle QA Automation Engineer (C#)",
-      "company": {
-        "name": "TaxCom",
-        "url": "",
-        "about": ""
-      },
-      "points": [
-        "UI tests development and support (C# + Selenium + SpecFlow)",
-        "Database tests development and support (C# + MSSQL)",
-        "Unit test development and support (C# + NUnit + MSTest)",
-        "Test launch monitor board development and support (React + Node.js)",
-        "Test cases writing and analysys"
-      ],
-      "color": "light-blue darken-3",
-      "dateFrom": "12.2017",
-      "dateTo": "06.2018"
-    },
-    {
-      "name": "Middle Back-end Node.js Developer (JavaScript)",
-      "company": {
-        "name": "IQ Option",
-        "url": "",
-        "about": ""
-      },
-      "points": [
-        "Chat microservice backend development and support (Node.js + Express + Socket.io)",
-        "Chat microservice admin frontend development and support (Node.js + React)",
-        "Integreation API tests development and support (Node.JS + Selfwritten Framework)",
-        "Unit tests development and support (Node.JS + Mocha + Chai)",
-        "Code reviewing"
-      ],
-      "color": "orange accent-4",
-      "dateFrom": "06.2018",
-      "dateTo": null
-    },
-    {
-      "name": "Full Stack Developer (TypeScript)",
-      "company": {
-        "name": "Serokell",
-        "url": "",
-        "about": ""
-      },
-      "points": [
-        "Company website development and support (TypeScript + Node.js + Selfwritten Framework)",
-        "Company admin panel development and support (TypeScript + Selfwritten Framework)"
-      ],
-      "color": "grey darken-4",
-      "dateFrom": "09.2018",
-      "dateTo": "11.2018"
     }
   ],
   "apis": [

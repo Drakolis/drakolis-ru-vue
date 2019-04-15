@@ -85,8 +85,8 @@
 </template>
 
 <script>
-import {API_HOST} from "../config/index";
-import { BreedingRhombusSpinner } from 'epic-spinners'
+import { API_HOST } from "../config/index";
+import { BreedingRhombusSpinner } from "epic-spinners";
 
 const getFamilyDataURL = API_HOST + "/family";
 export default {
@@ -98,61 +98,59 @@ export default {
       pageLoaded: false,
       pageError: null,
       personData: []
-    }
+    };
   },
   methods: {
-    showCV(person) {
-    },
-    getContactOnClickAction({url, type}) {
-      if (url.indexOf('http')>-1){
-          window.open(url, '_blank');
-          window.focus();
+    showCV(person) {},
+    getContactOnClickAction({ url, type }) {
+      if (url.indexOf("http") > -1) {
+        window.open(url, "_blank");
+        window.focus();
       } else {
-          window.location.href = url;
+        window.location.href = url;
       }
     },
     getContactIcon(type) {
-      if (type === 'mail')
-        return `fas fa-envelope`;
+      if (type === "mail") return `fas fa-envelope`;
       return `fab fa-${type}`;
     },
     getContactColor(type) {
       switch (type) {
         case "vk":
-          return '#4a76a8';
+          return "#4a76a8";
         case "facebook":
-          return '#4267b2';
+          return "#4267b2";
         case "twitter":
-          return '#1da1f2';
+          return "#1da1f2";
         case "deviantart":
-          return '#475c4d';
+          return "#475c4d";
         case "telegram":
-          return '#5682a3';
+          return "#5682a3";
         case "skype":
-          return '#1686d9';
+          return "#1686d9";
         case "github":
-          return '#24292e';
+          return "#24292e";
         case "whatsapp":
-          return '#1ebea5';
+          return "#1ebea5";
         case "mail":
-          return '#00796B';
+          return "#00796B";
         case "instagramm":
-          return '#303030';
+          return "#303030";
         case "discord":
           return "#7289da";
         default:
-          return 'secondary';
+          return "secondary";
       }
     },
     getContactTooltip(type) {
-        switch (type) {
-            case "vk":
-                return 'VK';
-            case "github":
-                return 'GitHub';
-            default:
-                return type;
-        }
+      switch (type) {
+        case "vk":
+          return "VK";
+        case "github":
+          return "GitHub";
+        default:
+          return type;
+      }
     }
   },
   mounted() {
@@ -168,11 +166,11 @@ export default {
       });
     */
     setTimeout(() => {
-      this.personData = require('../mock').family;
+      this.personData = require("../mock").family;
       this.pageLoaded = true;
     }, 1000 + 2000 * Math.random());
   }
-}
+};
 </script>
 
 <style>
@@ -182,7 +180,11 @@ ul.unstyled {
   padding-left: 4pt;
 }
 
-.v-icon.fa, .v-icon.fab, .v-icon.fal, .v-icon.far, .v-icon.fas {
+.v-icon.fa,
+.v-icon.fab,
+.v-icon.fal,
+.v-icon.far,
+.v-icon.fas {
   display: inherit;
 }
 </style>

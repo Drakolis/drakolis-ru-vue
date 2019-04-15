@@ -36,7 +36,7 @@ import LoginForm from "./LoginForm";
 
 export default {
   components: {
-    "login-form": LoginForm,
+    "login-form": LoginForm
   },
   data() {
     return {
@@ -50,6 +50,6 @@ export default {
     loginFormSwitch() {
       this.signInVisible = !this.signInVisible;
     }
-  },
+  }
 };
 </script>

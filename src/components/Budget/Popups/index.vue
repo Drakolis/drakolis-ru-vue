@@ -6,27 +6,27 @@
 </template>
 
 <script>
-import DeleteAccountDialog from "./DeleteAccountDialog"
-import EditAccountDialog from "./EditAccountDialog"
+import DeleteAccountDialog from "./DeleteAccountDialog";
+import EditAccountDialog from "./EditAccountDialog";
 
 export default {
   components: {
     "delete-account-dialog": DeleteAccountDialog,
     "edit-account-dialog": EditAccountDialog
   },
-  props: ['updateAccounts'],
+  props: ["updateAccounts"],
   data() {
-    return {
-    }
+    return {};
   },
   mounted() {
     [
       UI_EVENTS.BUDGET.OPEN_EDIT_ACCOUNT,
-      UI_EVENTS.BUDGET.OPEN_EDIT_OPERATION, UI_EVENTS.BUDGET.OPEN_DELETE_OPERATION
+      UI_EVENTS.BUDGET.OPEN_EDIT_OPERATION,
+      UI_EVENTS.BUDGET.OPEN_DELETE_OPERATION
     ].forEach(event => {
-      this.$bus.$on(event, (accountId) => {
+      this.$bus.$on(event, accountId => {
         this.accountId = accountId;
-        switch(event) {
+        switch (event) {
           case UI_EVENTS.BUDGET.OPEN_EDIT_ACCOUNT:
             this.openEditAccountModal = true;
             break;
@@ -35,7 +35,7 @@ export default {
             break;
         }
       });
-    })
+    });
   }
-}
+};
 </script>

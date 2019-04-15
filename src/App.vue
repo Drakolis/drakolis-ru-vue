@@ -12,7 +12,7 @@
 <script>
 import { UI_EVENTS } from "./bus.js";
 import SideSheet from "./components/Layout/SideSheet";
-import MenuBar from "./components/Layout/MenuBar"
+import MenuBar from "./components/Layout/MenuBar";
 import Notifications from "./components/Layout/Notifications";
 
 export default {

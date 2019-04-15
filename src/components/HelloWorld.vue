@@ -8,12 +8,10 @@
 </template>
 
 <script>
-  export default {
-  }
+export default {};
 </script>
 
 <style lang="scss">
-
 .terminal {
   font-family: Share Tech Mono;
   font-size: 300%;
@@ -43,12 +41,10 @@
       $random2: random(10000) / 10000;
       $random3: random(10000) / 10000;
       $randomBig: random(40) / 10;
-      text-shadow:
-        0 0 2px #20fafd,
-        ($random1 + $randomBig) * 1px 0 2px rgba(0,30,255,0.5),
-        -($random2 + $randomBig) * 1px 0 2px rgba(255,0,80,0.3),
-        ($random3 - $randomBig) * 1px 0 2px rgba(0,255,10,0.3),
-        0 0 3px;
+      text-shadow: 0 0 2px #20fafd,
+        ($random1 + $randomBig) * 1px 0 2px rgba(0, 30, 255, 0.5),
+        -($random2 + $randomBig) * 1px 0 2px rgba(255, 0, 80, 0.3),
+        ($random3 - $randomBig) * 1px 0 2px rgba(0, 255, 10, 0.3), 0 0 3px;
     }
   }
 }
@@ -74,7 +70,13 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
   z-index: 2;
   background-size: 100% 2px, 3px 100%;
   box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.7);
@@ -83,5 +85,4 @@
 .crt {
   animation: textShadow 1s infinite;
 }
-
 </style>

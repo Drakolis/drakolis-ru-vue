@@ -120,11 +120,11 @@
 </template>
 
 <script>
-import {API_HOST} from "../config/index";
-import { BreedingRhombusSpinner } from 'epic-spinners';
+import { API_HOST } from "../config/index";
+import { BreedingRhombusSpinner } from "epic-spinners";
 import ChartDemo from "../components/Budget/ChartDemo";
 import AccountSelector from "../components/Budget/AccountSelector";
-import Popups from "@/components/Budget/Popups"
+import Popups from "@/components/Budget/Popups";
 import moment from "moment";
 
 export default {
@@ -132,7 +132,7 @@ export default {
     "breeding-rhombus-spinner": BreedingRhombusSpinner,
     "chart-demo": ChartDemo,
     "account-selector": AccountSelector,
-    "popups": Popups
+    popups: Popups
   },
   data() {
     return {
@@ -146,105 +146,116 @@ export default {
       selectedAccountId: 2,
       headers: [
         {
-          value: 'name',
-          text: 'Name'
+          value: "name",
+          text: "Name"
         },
         {
-          value: 'category',
-          text: 'Category'
+          value: "category",
+          text: "Category"
         },
         {
-          value: 'date',
-          text: 'Date'
+          value: "date",
+          text: "Date"
         },
         {
-          value: 'sum',
-          text: 'Sum'
-        },
-      ],
-    }
+          value: "sum",
+          text: "Sum"
+        }
+      ]
+    };
   },
   mounted() {
-    Promise.all([
-      this.updateAccounts(),
-      this.updateCategories()
-    ]).then(
-      () => {
-        this.pageLoaded = true;
-      }
-    );
-
+    Promise.all([this.updateAccounts(), this.updateCategories()]).then(() => {
+      this.pageLoaded = true;
+    });
   },
   methods: {
     updateAccounts() {
-      return this.$api.budget.account.showAll()
-        .then(res => {
-          this.accounts = res.body.data;
-          this.selectedAccountId = (
-            this.selectedAccountId &&
-            this.accounts.find(account => account.id === this.selectedAccountId)
-          ) ? this.selectedAccountId : this.accounts[0].id;
-          this.updateOperations();
-          });
+      return this.$api.budget.account.showAll().then(res => {
+        this.accounts = res.body.data;
+        this.selectedAccountId =
+          this.selectedAccountId &&
+          this.accounts.find(account => account.id === this.selectedAccountId)
+            ? this.selectedAccountId
+            : this.accounts[0].id;
+        this.updateOperations();
+      });
     },
     updateCategories() {
-      return this.$api.budget.categories.showAll()
-        .then(res => this.categories = res.body.data);
+      return this.$api.budget.categories
+        .showAll()
+        .then(res => (this.categories = res.body.data));
     },
     updateOperations() {
-      return this.$api.budget.account.showOperations(this.selectedAccountId)
-        .then(res => this.operations = res.body.data);
+      return this.$api.budget.account
+        .showOperations(this.selectedAccountId)
+        .then(res => (this.operations = res.body.data));
     },
     formatTime(time) {
-      return moment(time).format('LLL');
+      return moment(time).format("LLL");
     }
   },
   computed: {
     multipleAccountsFeature() {
-      return this.$store.state.features.multipleAccounts
-        && this.$store.state.features.multipleAccounts.enabled;
+      return (
+        this.$store.state.features.multipleAccounts &&
+        this.$store.state.features.multipleAccounts.enabled
+      );
     },
     selectedAccount() {
-      return this.accounts && this.accounts.find(acc => acc.id === this.selectedAccountId);
+      return (
+        this.accounts &&
+        this.accounts.find(acc => acc.id === this.selectedAccountId)
+      );
     },
     income() {
-      return this.operations && this.operations.length && this.categories && this.categories.length
+      return this.operations &&
+        this.operations.length &&
+        this.categories &&
+        this.categories.length
         ? this.operations
-          .map(op => {
-            op.category = this.categories.find(cat => cat.id === op.categoryId);
-            return op;
-          })
-          .filter(op => op.category.isIncome)
-          .map(op => {
-            return {
-              name: op.name,
-              category: op.category.name,
-              date: op.date,
-              sum: Math.abs(op.sum)
-            }
-          })
+            .map(op => {
+              op.category = this.categories.find(
+                cat => cat.id === op.categoryId
+              );
+              return op;
+            })
+            .filter(op => op.category.isIncome)
+            .map(op => {
+              return {
+                name: op.name,
+                category: op.category.name,
+                date: op.date,
+                sum: Math.abs(op.sum)
+              };
+            })
         : [];
     },
     expenses() {
-      return this.operations && this.operations.length && this.categories && this.categories.length
+      return this.operations &&
+        this.operations.length &&
+        this.categories &&
+        this.categories.length
         ? this.operations
-          .map(op => {
-            op.category = this.categories.find(cat => cat.id === op.categoryId);
-            return op;
-          })
-          .filter(op => !op.category.isIncome)
-          .map(op => {
-            return {
-              name: op.name,
-              category: op.category.name,
-              date: op.date,
-              sum: Math.abs(op.sum)
-            }
-          })
+            .map(op => {
+              op.category = this.categories.find(
+                cat => cat.id === op.categoryId
+              );
+              return op;
+            })
+            .filter(op => !op.category.isIncome)
+            .map(op => {
+              return {
+                name: op.name,
+                category: op.category.name,
+                date: op.date,
+                sum: Math.abs(op.sum)
+              };
+            })
         : [];
     }
   }
-}
+};
 </script>
 
 <style>
@@ -253,7 +264,11 @@ ul.unstyled {
   padding-left: 4pt;
 }
 
-.v-icon.fa, .v-icon.fab, .v-icon.fal, .v-icon.far, .v-icon.fas {
+.v-icon.fa,
+.v-icon.fab,
+.v-icon.fal,
+.v-icon.far,
+.v-icon.fas {
   display: inherit;
 }
 </style>

@@ -36,13 +36,12 @@ export default {
       password: ""
     };
   },
-  props: ['switchMethod'],
+  props: ["switchMethod"],
   methods: {
     singInSubmit() {
       this.$api.user.signIn(this.login, this.password);
       this.switchMethod();
-    },
-
+    }
   }
 };
 </script>
