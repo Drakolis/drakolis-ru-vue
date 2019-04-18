@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import data from "@/mock/last.json";
 import { BreedingRhombusSpinner } from "epic-spinners";
+import { UI_EVENTS } from '../../../bus';
 
 export default {
   components: {
@@ -55,10 +55,11 @@ export default {
   },
   data() {
     return {
-      loaded: true,
-      data: data.recenttracks.track.slice(0, 10)
+      loaded: false,
+      data: []
     };
   },
+  props: ["account"],
   methods: {
     getAvatarForEntry(item) {
       return item.image.find(i => i.size === "medium")["#text"];
@@ -67,7 +68,21 @@ export default {
       return item["@attr"] && item["@attr"].nowplaying
         ? "Now playing"
         : item.date["#text"];
+    },
+    reloadData() {
+      this.$api.external.lastfm.recent(this.account)
+        .then(resp => {
+          if (!resp.data.recent) {
+            this.$bus.$emit(UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL);
+            return;
+          }
+          this.data = resp.body.recent;
+          this.loaded = true;
+        });
     }
+  },
+  mounted() {
+    this.reloadData();
   }
 };
 </script>

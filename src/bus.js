@@ -7,6 +7,7 @@ export const UI_EVENTS = {
 
   ERROR_DEVELOPMENT: "error.development",
   ERROR_RESTRICTED: "error.restricted",
+  ERROR_EXTERNAL_SERVICE_FAIL: "error.externalServiceFail",
 
   BUDGET: {
     OPEN_EDIT_ACCOUNT: "open.editAccount@budget",

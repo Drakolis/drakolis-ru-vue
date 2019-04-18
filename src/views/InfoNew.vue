@@ -171,7 +171,7 @@
 
       <v-flex xs12>
         <v-flex xs12 sm6>
-          <last-fm :account="myData.apis.find(i => i.type === 'lastfm').param"></last-fm>
+          <last-fm :account="myData && myData.apis && myData.apis.find(i => i.type === 'lastfm').param"></last-fm>
         </v-flex>
       </v-flex>
 

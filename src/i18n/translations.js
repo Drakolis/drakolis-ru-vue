@@ -29,6 +29,10 @@ export default {
       restricted: {
         title: "Dragons only!",
         info: "Access is restricted only for worthy ones!"
+      },
+      externalServiceFail: {
+        title: "Stupid humans!",
+        info: "Some external service had failed to answer our call"
       }
     },
     validators: {

@@ -10,7 +10,7 @@
       <v-btn icon :href="hrefAccount" target="_blank">
         <v-icon>mdi-lastfm</v-icon>
       </v-btn>
-      <v-btn icon @click="refresh">
+      <v-btn icon @click="">
         <v-icon>refresh</v-icon>
       </v-btn>
     </v-toolbar>
@@ -23,7 +23,7 @@
           :key="tab.code"
           :value="tab.code"
         >
-          <component :is="tab.component" :account="account"></component>
+          <component  v-if="account" :is="tab.component" v-bind="{account}"></component>
         </v-tab-item>
       </v-tabs-items>
     </v-card-text>

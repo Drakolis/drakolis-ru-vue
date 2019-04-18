@@ -26,6 +26,8 @@ const app = new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+});
 
 Vue.prototype.$api = Api(app);
+
+app.$mount("#app");

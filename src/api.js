@@ -33,6 +33,13 @@ const METHOD_URLS = {
         return API_HOST + `api/v1/budget/categories`;
       }
     }
+  },
+  external: {
+    lastfm: {
+      recent(account) {
+        return API_HOST + `api/external/lastfm/${account}/recent`;
+      }
+    }
   }
 };
 
@@ -140,6 +147,17 @@ export default vue => {
           return vue.$http
             .get(METHOD_URLS.budget.categories.showAll(), setSettings())
             .catch(() => {});
+        }
+      }
+    },
+    external: {
+      lastfm: {
+        recent(account) {
+          return vue.$http
+            .get(METHOD_URLS.external.lastfm.recent(account), setSettings())
+            .catch(() => {
+              vue.$bus.$emit(UI_EVENTS.ERROR_DEVELOPMENT);
+            });
         }
       }
     }

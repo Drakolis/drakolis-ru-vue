@@ -24,7 +24,7 @@ export default {
   },
   mounted() {
     //Error notify
-    [UI_EVENTS.ERROR_DEVELOPMENT, UI_EVENTS.ERROR_RESTRICTED].forEach(error => {
+    [UI_EVENTS.ERROR_DEVELOPMENT, UI_EVENTS.ERROR_RESTRICTED, UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL].forEach(error => {
       this.$bus.$on(error, () => {
         this.$snotify.error(
           this.$t(`${error}.info`),
