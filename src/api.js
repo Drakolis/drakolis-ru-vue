@@ -37,7 +37,10 @@ const METHOD_URLS = {
   external: {
     lastfm: {
       recent(account) {
-        return API_HOST + `api/external/lastfm/${account}/recent`;
+        return API_HOST + `api/v1/external/lastfm/${account}/recent`;
+      },
+      loved(account) {
+        return API_HOST + `api/v1/external/lastfm/${account}/loved`;
       }
     }
   }
@@ -155,9 +158,12 @@ export default vue => {
         recent(account) {
           return vue.$http
             .get(METHOD_URLS.external.lastfm.recent(account), setSettings())
-            .catch(() => {
-              vue.$bus.$emit(UI_EVENTS.ERROR_DEVELOPMENT);
-            });
+            .catch(() => {});
+        },
+        loved(account) {
+          return vue.$http
+            .get(METHOD_URLS.external.lastfm.loved(account), setSettings())
+            .catch(() => {});
         }
       }
     }
