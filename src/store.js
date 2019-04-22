@@ -8,7 +8,8 @@ export default new Vuex.Store({
     loggedIn: false,
     features: {
       multipleAccounts: false
-    }
+    },
+    settings: {}
   },
   mutations: {
     signIn(state) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     signOut(state) {
       state.loggedIn = false;
+    },
+    loadSettings(state, settings) {
+      state.settings = settings;
     }
   },
   actions: {}

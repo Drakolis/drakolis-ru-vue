@@ -33,6 +33,10 @@ export default {
       externalServiceFail: {
         title: "Stupid humans!",
         info: "Some external service had failed to answer our call"
+      },
+      config: {
+        title: "Oh shi...",
+        info: "Config was not loaded..."
       }
     },
     validators: {

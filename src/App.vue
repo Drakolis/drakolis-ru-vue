@@ -3,7 +3,7 @@
     <side-sheet v-if="$store.state.loggedIn"/>
     <menu-bar/>
     <v-content>
-      <router-view/>
+      <router-view v-if="loaded"/>
     </v-content>
     <notifications/>
   </v-app>
@@ -16,6 +16,11 @@ import MenuBar from "./components/Layout/MenuBar";
 import Notifications from "./components/Layout/Notifications";
 
 export default {
+  data() {
+    return {
+      loaded: false
+    }
+  },
   name: "App",
   components: {
     "side-sheet": SideSheet,
@@ -23,8 +28,23 @@ export default {
     notifications: Notifications
   },
   mounted() {
+    Promise.all([
+      this.$api.settings
+        .loadAppSettings()
+        .then(data => {
+          this.$store.commit('loadSettings', data);
+        })
+    ])
+    .then(() => {
+      this.loaded = true;
+    });
     //Error notify
-    [UI_EVENTS.ERROR_DEVELOPMENT, UI_EVENTS.ERROR_RESTRICTED, UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL].forEach(error => {
+    [
+      UI_EVENTS.ERROR_DEVELOPMENT,
+      UI_EVENTS.ERROR_RESTRICTED,
+      UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL,
+      UI_EVENTS.ERROR_CONFIG
+    ].forEach(error => {
       this.$bus.$on(error, () => {
         this.$snotify.error(
           this.$t(`${error}.info`),

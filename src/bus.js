@@ -5,6 +5,7 @@ Vue.prototype.$bus = new Vue();
 export const UI_EVENTS = {
   SETTINGS_TOGGLE: "settings.toggle",
 
+  ERROR_CONFIG: "error.config",
   ERROR_DEVELOPMENT: "error.development",
   ERROR_RESTRICTED: "error.restricted",
   ERROR_EXTERNAL_SERVICE_FAIL: "error.externalServiceFail",
