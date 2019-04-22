@@ -170,9 +170,12 @@ export default vue => {
         recent(account) {
           return vue.$http
             .get(METHOD_URLS.external.lastfm.recent(account), setSettings())
-            .catch(() => {
-              vue.$bus.$emit(UI_EVENTS.ERROR_DEVELOPMENT);
-            });
+            .catch(() => {});
+        },
+        loved(account) {
+          return vue.$http
+            .get(METHOD_URLS.external.lastfm.loved(account), setSettings())
+            .catch(() => {});
         }
       }
     }
