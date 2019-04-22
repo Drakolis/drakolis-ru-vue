@@ -46,6 +46,9 @@ const METHOD_URLS = {
     lastfm: {
       recent(account) {
         return API_HOST + `v1/proxy/lastfm/${account}/recent`;
+      },
+      loved(account) {
+        return API_HOST + `v1/proxy/lastfm/${account}/loved`;
       }
     }
   }
@@ -95,9 +98,12 @@ export default vue => {
   const api = {
     settings: {
       loadAppSettings() {
-        return vue.$http.get(METHOD_URLS.settings.public()).catch(() => {
-          vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
-        });
+        return vue.$http
+          .get(METHOD_URLS.settings.public())
+          .catch(() => {
+            vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
+          })
+          .then(res => res.body.data);
       }
     },
     user: {

@@ -23,7 +23,7 @@
           :key="tab.code"
           :value="tab.code"
         >
-          <component  v-if="account" :is="tab.component" v-bind="{account}"></component>
+          <track-list v-if="account" :method="tab.method" :account="account"/>
         </v-tab-item>
       </v-tabs-items>
     </v-card-text>
@@ -47,29 +47,29 @@
 
 
 <script>
-import RecentTracks from "./RecentTracks";
+import TrackList from "./TrackList";
 
 export default {
   components: {
-    "recent-tracks": RecentTracks
+    "track-list": TrackList
   },
   props: ["account"],
   data() {
     return {
-      selectedTab: "tab-rec",
+      selectedTab: "tab-recent",
       color: "red darken-3",
       tabs: [
         {
           name: "Recent",
           icon: "schedule",
-          code: "tab-rec",
-          component: "recent-tracks"
+          code: "tab-recent",
+          method: "recent"
         },
         {
-          name: "Favorites",
+          name: "Loved",
           icon: "favorite",
-          code: "tab-fav",
-          component: "recent-tracks"
+          code: "tab-loved",
+          method: "loved"
         }
       ]
     };

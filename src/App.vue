@@ -1,10 +1,13 @@
 <template>
   <v-app dark class="app-scroll-fix">
-    <side-sheet v-if="$store.state.loggedIn"/>
-    <menu-bar/>
-    <v-content>
-      <router-view v-if="loaded"/>
-    </v-content>
+    <div v-if="loaded">
+      <side-sheet v-if="$store.state.loggedIn"/>
+      <menu-bar/>
+      <v-content>
+        <router-view/>
+      </v-content>
+    </div>
+    <loader v-else/>
     <notifications/>
   </v-app>
 </template>
@@ -14,6 +17,7 @@ import { UI_EVENTS } from "./bus.js";
 import SideSheet from "./components/Layout/SideSheet";
 import MenuBar from "./components/Layout/MenuBar";
 import Notifications from "./components/Layout/Notifications";
+import Loader from "./views/Loader";
 
 export default {
   data() {
@@ -25,7 +29,8 @@ export default {
   components: {
     "side-sheet": SideSheet,
     "menu-bar": MenuBar,
-    notifications: Notifications
+    notifications: Notifications,
+    loader: Loader
   },
   mounted() {
     Promise.all([

@@ -18,9 +18,9 @@
               <v-list-tile-title>{{item.name}}</v-list-tile-title>
               <v-list-tile-sub-title>
                 <span class="text--primary">
-                  {{item.artist['#text']}}
+                  {{item.artist['#text'] || item.artist.name}}
                 </span>
-                  - {{item.album['#text']}}
+                <span v-if="item.album"> - {{item.album['#text']}}</span>
               </v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
@@ -59,7 +59,7 @@ export default {
       data: []
     };
   },
-  props: ["account"],
+  props: ["account", "method"],
   methods: {
     getAvatarForEntry(item) {
       return item.image.find(i => i.size === "medium")["#text"];
@@ -70,13 +70,13 @@ export default {
         : item.date["#text"];
     },
     reloadData() {
-      this.$api.external.lastfm.recent(this.account)
+      this.$api.external.lastfm[this.method](this.account)
         .then(resp => {
-          if (!resp.data.recent) {
+          if (!resp.data.tracks) {
             this.$bus.$emit(UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL);
             return;
           }
-          this.data = resp.body.recent;
+          this.data = resp.body.tracks;
           this.loaded = true;
         });
     }

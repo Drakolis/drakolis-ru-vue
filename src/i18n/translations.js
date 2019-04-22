@@ -1,12 +1,12 @@
 export default {
   en: {
     global: {
+      app: "Drakolis.PW",
       ok: "Ok",
       cancel: "Cancel",
       close: "Close",
       save: "Save",
-      connecting: "Connecting to server...",
-      reconnecting: "Connection lost. Reconnecting...",
+      loading: "Loading website...",
       auth: {
         signIn: "Sign in",
         signOut: "Sign out",
