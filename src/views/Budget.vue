@@ -26,7 +26,13 @@
               <v-card-text>
                 <v-layout>
                   <v-flex><h2>Account</h2></v-flex>
-                  <v-flex><account-selector :selectedAccount="selectedAccount" :accounts="accounts"/></v-flex>
+                  <v-flex>
+                    <account-selector
+                      :selectedAccount="selectedAccount"
+                      :accounts="accounts"
+                      @selectValue="(val) => {selectedAccountId = val}"
+                    />
+                  </v-flex>
                 </v-layout>
               </v-card-text>
             </v-card>
@@ -120,7 +126,6 @@
 </template>
 
 <script>
-import { API_HOST } from "../config/index";
 import { BreedingRhombusSpinner } from "epic-spinners";
 import ChartDemo from "../components/Budget/ChartDemo";
 import AccountSelector from "../components/Budget/AccountSelector";
@@ -143,7 +148,7 @@ export default {
       operations: null,
       categories: null,
 
-      selectedAccountId: 2,
+      selectedAccountId: 0,
       headers: [
         {
           value: "name",
@@ -177,7 +182,9 @@ export default {
           this.selectedAccountId &&
           this.accounts.find(account => account.id === this.selectedAccountId)
             ? this.selectedAccountId
-            : this.accounts[0].id;
+            : (this.accounts.length > 0
+              ? this.accounts[0].id
+              : 0);
         this.updateOperations();
       });
     },
@@ -205,7 +212,7 @@ export default {
     selectedAccount() {
       return (
         this.accounts &&
-        this.accounts.find(acc => acc.id === this.selectedAccountId)
+        this.accounts.find(acc => acc.id === this.selectedAccountId) || {}
       );
     },
     income() {

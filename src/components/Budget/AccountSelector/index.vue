@@ -4,92 +4,22 @@
     :close-on-content-click="false"
     style="width: 100%"
   >
-    <v-list
+    <selected-item
       slot="activator"
-      class="pa-0"
-      style="width: 100%"
-    >
-      <v-list-tile
-        avatar
-        @click="() => {}"
-      >
-        <v-list-tile-avatar>
-          <v-avatar size="48" :color="avatarColor">
-            <v-icon dark>{{currencySymbol(selectedAccount.currency)}}</v-icon>
-          </v-avatar>
-        </v-list-tile-avatar>
-
-        <v-list-tile-content>
-          <v-list-tile-title>
-            {{selectedAccount.name}}
-          </v-list-tile-title>
-          <v-list-tile-sub-title>
-            <span :style="summStyle">
-              {{(selectedAccount.balance || 0).toFixed(2)}}
-            </span>
-          </v-list-tile-sub-title>
-        </v-list-tile-content>
-
-        <v-list-tile-action>
-          <v-icon color="grey lighten-1">expand_more</v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
-    </v-list>
+      :account="selectedAccount"
+    />
 
     <v-card>
       <v-list class="pt-0">
-        <v-list-tile
-          avatar
-          @click="() => {}"
+        <list-item
           v-for="account in accountsSorted"
           :key="account.id"
-          class="mb-2"
-        >
-          <v-list-tile-avatar>
-            <v-avatar size="48" :color="avatarColor">
-              <v-icon dark>{{currencySymbol(account.currency)}}</v-icon>
-            </v-avatar>
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title>
-              {{account.name}}
-            </v-list-tile-title>
-            <v-list-tile-sub-title>
-              <span :style="summStyle">
-                {{(account.balance || 0).toFixed(2)}}
-              </span>
-            </v-list-tile-sub-title>
-          </v-list-tile-content>
-
-          <v-list-tile-action>
-            <v-btn
-              @click="deleteAccount(account)"
-              icon
-              flat
-              color="red darken-3"
-            >
-              <v-icon>delete</v-icon>
-            </v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
-      <v-divider class="mb-2"/>
-        <v-list-tile
-          avatar
-          @click="() => {}"
-        >
-          <v-list-tile-avatar>
-            <v-avatar size="48" color="green">
-              <v-icon dark>add</v-icon>
-            </v-avatar>
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title>
-              Add new account
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          :account="account"
+          @selectValue="onSelectAccount"
+          @deleteValue="onDeleteAccount"
+        />
+        <v-divider class="mb-2"/>
+        <list-item-new />
       </v-list>
     </v-card>
 
@@ -97,38 +27,30 @@
 </template>
 
 <script>
-import Colors from "@/Colors.js";
-import { UI_EVENTS } from "@/bus.js";
+import SelectorSelectedItem from "./SelectorSelectedItem";
+import SelectorItem from "./SelectorItem";
+import SelectorItemNew from "./SelectorItemNew";
 const ALLOWED_CURRENCY = ["USD", "EUR", "RUR"];
 
 export default {
   data() {
     return {
-      menu: false,
-      avatarColor: Colors.cyan.darken2,
-      summStyle: {
-        color: Colors.grey.lighten3
-      },
-      centsStyle: {
-        color: Colors.grey.lighten1
-      }
-    };
+      menu: false
+    }
+  },
+  components: {
+    'selected-item': SelectorSelectedItem,
+    'list-item': SelectorItem,
+    'list-item-new': SelectorItemNew
   },
   props: ["selectedAccount", "accounts"],
   methods: {
-    currencySymbol(currencyCode) {
-      switch (currencyCode) {
-        case "USD":
-          return "mdi-currency-usd";
-        case "EUR":
-          return "mdi-currency-eur";
-        case "RUR":
-          return "mdi-currency-rub";
-      }
-    },
-    deleteAccount(account) {
+    onDeleteAccount() {
       this.menu = false;
-      this.$bus.$emit(UI_EVENTS.BUDGET.OPEN_DELETE_ACCOUNT, account);
+    },
+    onSelectAccount(accountId) {
+      this.menu = false;
+      this.$emit('selectValue', accountId);
     }
   },
   computed: {
@@ -136,18 +58,14 @@ export default {
       const ar = this.accounts.sort(
         (a, b) => (a.id === this.selectedAccount.id ? -1 : 1)
       );
-      console.log(ar.map(e => e.id));
       return ar;
     }
   },
   watch: {
     accounts: function(newVal, oldVal) {
-      // watch it
-      console.log("Updating");
       this.$forceUpdate();
     },
     selectedAccount: function(newVal, oldVal) {
-      // watch it
       this.$forceUpdate();
     }
   }

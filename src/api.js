@@ -72,7 +72,7 @@ export default vue => {
   const setSettings = (cookie = null) => {
     return {
       headers: {
-        Authorization: "Bearer " + cookie || getCookie()
+        Authorization: "Bearer " + (cookie || getCookie())
       }
     };
   };
@@ -87,13 +87,6 @@ export default vue => {
     vue.$store.commit("signOut");
     return true;
   };
-
-  const cookieValue = getCookie();
-  if (cookieValue)
-    vue.$http
-      .get(METHOD_URLS.user.showMe(), setSettings(cookieValue))
-      .then(() => signIn(cookieValue))
-      .catch(() => signOut());
 
   const api = {
     settings: {
@@ -131,6 +124,7 @@ export default vue => {
       showMe() {
         return vue.$http
           .get(METHOD_URLS.user.showMe(), setSettings())
+          .then(() => signIn(getCookie()))
           .catch(() => signOut());
       },
 

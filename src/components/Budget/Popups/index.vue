@@ -8,6 +8,7 @@
 <script>
 import DeleteAccountDialog from "./DeleteAccountDialog";
 import EditAccountDialog from "./EditAccountDialog";
+import { UI_EVENTS } from "@/bus.js";
 
 export default {
   components: {

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home";
@@ -5,7 +6,7 @@ import Router from "vue-router";
 import Budget from "./views/Budget";
 import Error404 from "./views/Error404";
 import InfoNew from "./views/InfoNew";
-import store from "./store.js";
+import store from "./store";
 
 Vue.use(Router);
 
@@ -21,15 +22,16 @@ export default new Router({
     {
       path: "/budget",
       name: "budget",
-      component: () => {
-        if (store.state.loggedIn) return import("./views/Budget");
-        else return import("./views/Error404");
+      component: Budget,
+      beforeEnter: (to, from, next) => {
+        if (!store.getters.loggedIn) next("/");
+          else next();
       }
     },
     {
       path: "/*",
       name: "404",
-      component: InfoNew
+      component: Error404
     }
     // {
     //   path: "/about",
