@@ -2,15 +2,16 @@
   <v-navigation-drawer
     v-model="show"
     :app="displayApp"
-    fixed
+    :absolute="displayApp"
+    :fixed="!displayApp"
     right
     disable-route-watcher
+    disable-resize-watcher
     :temporary="!displayApp"
-    clipped
   >
 
-    <v-expansion-panel>
-      <v-expansion-panel-content
+    <v-expansion-panels>
+      <v-expansion-panel
         v-for="feature in settings"
         v-model="feature.open"
         :key="feature.feature"
@@ -36,14 +37,14 @@
                 :key="setting.setting"
                 :label="setting.name"
                 :value="setting.value"
-                box
+                filled
               >
               </v-text-field>
             </v-form>
           </v-card-text>
         </v-card>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+      </v-expansion-panel>
+    </v-expansion-panels>
 
   </v-navigation-drawer>
 </template>

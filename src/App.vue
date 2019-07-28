@@ -1,14 +1,14 @@
 <template>
-  <v-app dark class="app-scroll-fix">
+  <v-app class="app-scroll-fix">
     <div v-if="loaded">
-      <side-sheet v-if="$store.state.loggedIn"/>
-      <menu-bar/>
+      <side-sheet v-if="$store.state.loggedIn" />
+      <menu-bar />
       <v-content>
-        <router-view/>
+        <router-view />
       </v-content>
     </div>
-    <loader v-else/>
-    <notifications/>
+    <loader v-else />
+    <notifications />
   </v-app>
 </template>
 
@@ -43,6 +43,7 @@ export default {
     .then(() => {
       this.loaded = true;
     });
+    this.loaded = true;
     //Error notify
     [
       UI_EVENTS.ERROR_DEVELOPMENT,
@@ -61,8 +62,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="stylus">
 .drakolis-font {
+  font-family: "Coda", "Roboto", sans-serif !important;
+}
+.v-application .display-4.drakolis-font {
+  font-family: "Coda", "Roboto", sans-serif !important;
+}
+.v-application .display-3.drakolis-font {
   font-family: "Coda", "Roboto", sans-serif !important;
 }
 .mono-font {

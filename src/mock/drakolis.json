@@ -1,8 +1,8 @@
 {
   "name": "Mika Drakolis",
   "title": "Mathematician, Developer, Dragon",
-  "photoUrl": "https://secure.gravatar.com/avatar/89a21038c3b71fa69b62486c32e9c3a6?s=500",
-  "avatarUrl": "https://secure.gravatar.com/avatar/141ce86b43c992756c31a097ce03800f?s=500",
+  "photoUrl": "https://secure.gravatar.com/avatar/8b703469859381a6fac4af8acf351188?s=500",
+  "avatarUrl": "https://secure.gravatar.com/avatar/8b703469859381a6fac4af8acf351188?s=500",
   "dateOfBirth": "23.05.1993",
   "likes": [
     ["Animals", ":lizard:"],
@@ -22,6 +22,7 @@
     ["Russian", ":flag-ru:", "Native"],
     ["English", ":flag-gb:", "Almost Perfect"],
     ["Dovahzul (Dragon Language)", ":dragon_face:", "Good"],
+    ["Greek", ":flag-gr:", "Learning"],
     ["Spanish", ":flag-es:", "A Bit"]
   ],
   "skills": [

@@ -1,5 +1,5 @@
-PW<template>
-  <v-toolbar app clipped-right>
+<template>
+  <v-app-bar app clipped-left color="darkest">
     <v-toolbar-title class="headline text-uppercase">
       <span class="drakolis-font">Drakolis</span>
       <span class="font-weight-light">.PW</span>
@@ -15,19 +15,23 @@ PW<template>
       offset-x
       right
     >
-      <v-btn flat icon slot="activator">
-        <v-icon>input</v-icon>
-      </v-btn>
+      <template v-slot:activator="{ on }">
+        <v-btn text icon v-on="on">
+          <v-icon>input</v-icon>
+        </v-btn>
+      </template>
       <login-form :switchMethod="loginFormSwitch"/>
     </v-menu>
 
     <v-tooltip bottom v-if="$store.state.loggedIn">
-      <v-btn flat icon slot="activator" @click="settingSwitch">
-        <v-icon>settings</v-icon>
-      </v-btn>
+      <template v-slot:activator="{ on }">
+        <v-btn text icon v-on="on" @click="settingSwitch">
+          <v-icon>settings</v-icon>
+        </v-btn>
+      </template>
       <span>Toggle Settings Menu</span>
     </v-tooltip>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script>

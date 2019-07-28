@@ -1,12 +1,12 @@
 <template>
   <v-container grid-list-xl>
-    <v-layout
-      column
-    >
+    <v-layout column>
       <v-flex>
-        <div class="text-xs-center">
-          <p :class="'drakolis-font ' + nameSizeClass">{{myData.name}}</p>
-          <small :class="'font-weight-light ' + titleSizeClass">{{myData.title}}</small>
+        <div class="text-center">
+          <p :class="nameSizeClass + ' drakolis-font'">{{ myData.name }}</p>
+          <small :class="'font-weight-light ' + titleSizeClass">
+            {{ myData.title }}
+          </small>
         </div>
       </v-flex>
 
@@ -20,10 +20,7 @@
             <v-layout column>
               <v-flex xs12>
                 <v-card class="elevation-5">
-                  <v-img
-                    :src="myData.photoUrl"
-                    aspect-ratio="1"
-                  ></v-img>
+                  <v-img :src="myData.photoUrl" aspect-ratio="1"></v-img>
                 </v-card>
               </v-flex>
               <v-flex xs12>
@@ -33,22 +30,22 @@
                   </v-card-title>
                   <v-card-text>
                     <v-list>
-                        <v-list-tile>
-                          <v-list-tile-action>
-                            <v-icon>event</v-icon>
-                          </v-list-tile-action>
-                          <v-list-tile-content>
-                            <v-list-tile-title>{{myData.dateOfBirth}}</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile>
-                          <v-list-tile-action>
-                            <v-icon>location_on</v-icon>
-                          </v-list-tile-action>
-                          <v-list-tile-content>
-                            <v-list-tile-title>{{myData.location}}</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>event</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title>{{myData.dateOfBirth}}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>location_on</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title>{{myData.location}}</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
                     </v-list>
                   </v-card-text>
                 </v-card>
@@ -63,15 +60,15 @@
               </v-card-title>
               <v-card-text>
                 <v-list>
-                  <v-list-tile v-for="lang in myData.languages" :key="lang[0]">
-                      <v-list-tile-action>
-                        <drakolis-emoji :emoji="lang[1]"></drakolis-emoji>
-                      </v-list-tile-action>
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{lang[0]}}</v-list-tile-title>
-                        <v-list-tile-sub-title>{{lang[2]}}</v-list-tile-sub-title>
-                      </v-list-tile-content>
-                  </v-list-tile>
+                  <v-list-item v-for="lang in myData.languages" :key="lang[0]">
+                    <v-list-item-icon>
+                      <drakolis-emoji :emoji="lang[1]"></drakolis-emoji>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>{{lang[0]}}</v-list-item-title>
+                      <v-list-item-subtitle>{{lang[2]}}</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
                 </v-list>
               </v-card-text>
               <v-card-title primary-title class="py-0">
@@ -85,20 +82,17 @@
                     :key="item[0]"
                     no-action
                   >
-                    <v-list-tile slot="activator">
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{ item[0] }}</v-list-tile-title>
-                      </v-list-tile-content>
-                    </v-list-tile>
+                    <v-list-item slot="activator">
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item[0] }}</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
 
-                    <v-list-tile
-                      v-for="subItem in item[2]"
-                      :key="subItem"
-                    >
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{ subItem }}</v-list-tile-title>
-                      </v-list-tile-content>
-                    </v-list-tile>
+                    <v-list-item v-for="subItem in item[2]" :key="subItem">
+                      <v-list-item-content>
+                        <v-list-item-title>{{ subItem }}</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
                   </v-list-group>
                 </v-list>
               </v-card-text>
@@ -112,14 +106,14 @@
               </v-card-title>
               <v-card-text>
                 <v-list>
-                  <v-list-tile v-for="like in myData.likes" :key="like[0]">
-                      <v-list-tile-action>
-                        <drakolis-emoji :emoji="like[1]"></drakolis-emoji>
-                      </v-list-tile-action>
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{like[0]}}</v-list-tile-title>
-                      </v-list-tile-content>
-                  </v-list-tile>
+                  <v-list-item v-for="like in myData.likes" :key="like[0]">
+                    <v-list-item-icon>
+                      <drakolis-emoji :emoji="like[1]"></drakolis-emoji>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>{{like[0]}}</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
                 </v-list>
               </v-card-text>
               <v-card-title primary-title class="py-0">
@@ -127,19 +121,18 @@
               </v-card-title>
               <v-card-text>
                 <v-list>
-                  <v-list-tile v-for="dislike in myData.dislikes" :key="dislike[0]">
-                      <v-list-tile-action>
-                        <drakolis-emoji :emoji="dislike[1]"></drakolis-emoji>
-                      </v-list-tile-action>
-                      <v-list-tile-content>
-                        <v-list-tile-title>{{dislike[0]}}</v-list-tile-title>
-                      </v-list-tile-content>
-                  </v-list-tile>
+                  <v-list-item v-for="dislike in myData.dislikes" :key="dislike[0]">
+                    <v-list-item-icon>
+                      <drakolis-emoji :emoji="dislike[1]"></drakolis-emoji>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title>{{dislike[0]}}</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
                 </v-list>
               </v-card-text>
             </v-card>
           </v-flex>
-
         </v-layout>
       </v-flex>
 
@@ -148,19 +141,26 @@
       </v-flex>
 
       <v-flex>
-        <v-layout wrap justify-space-around>
-          <template
-            v-for="contact in myData.contacts"
-          >
-            <v-tooltip bottom :key="contact.type">
-              <v-btn fab large
-                slot="activator"
-                @click="getContactOnClickAction(contact)"
-                :color="getContactColor(contact.type)"
-              ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
-              </v-btn>
-              <span style="text-transform: capitalize;" class="subheading">{{getContactTooltip(contact.type)}}</span>
-            </v-tooltip>
+        <v-layout wrap align-center justify-space-around>
+          <template v-for="contact in myData.contacts">
+            <v-flex shrink :key="contact.type">
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    fab
+                    large
+                    v-on="on"
+                    @click="getContactOnClickAction(contact)"
+                    :color="getContactColor(contact.type)"
+                  >
+                    <v-icon>{{getContactIcon(contact.type)}}</v-icon>
+                  </v-btn>
+                </template>
+                <span style="text-transform: capitalize;">
+                  {{getContactTooltip(contact.type)}}
+                </span>
+              </v-tooltip>
+            </v-flex>
           </template>
         </v-layout>
       </v-flex>
@@ -171,12 +171,13 @@
 
       <v-flex xs12>
         <v-flex xs12 sm6>
-          <last-fm :account="myData && myData.apis && myData.apis.find(i => i.type === 'lastfm').param"></last-fm>
+          <last-fm
+            :account="myData && myData.apis && myData.apis.find(i => i.type === 'lastfm').param"
+          ></last-fm>
         </v-flex>
       </v-flex>
 
-      <v-flex>
-      </v-flex>
+      <v-flex></v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -204,13 +205,13 @@ export default {
   computed: {
     nameSizeClass() {
       return [/*'sm',*/ "xs"].includes(this.$vuetify.breakpoint.name)
-        ? "my-3 display-3"
+        ? "my-3 display-4"
         : "my-4 display-4";
     },
     titleSizeClass() {
       return [/*'sm',*/ "xs"].includes(this.$vuetify.breakpoint.name)
-        ? "display-2"
-        : "display-1";
+        ? "display-1"
+        : "display-2";
     }
   },
   methods: {
