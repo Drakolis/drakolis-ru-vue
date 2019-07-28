@@ -4,9 +4,9 @@
       <v-flex>
         <div class="text-center">
           <p :class="nameSizeClass + ' drakolis-font'">{{ myData.name }}</p>
-          <small :class="'font-weight-light ' + titleSizeClass">
-            {{ myData.title }}
-          </small>
+          <small :class="'font-weight-light ' + titleSizeClass">{{
+            myData.title
+          }}</small>
         </div>
       </v-flex>
 
@@ -35,7 +35,9 @@
                           <v-icon>event</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                          <v-list-item-title>{{myData.dateOfBirth}}</v-list-item-title>
+                          <v-list-item-title>{{
+                            myData.dateOfBirth
+                          }}</v-list-item-title>
                         </v-list-item-content>
                       </v-list-item>
                       <v-list-item>
@@ -43,7 +45,9 @@
                           <v-icon>location_on</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                          <v-list-item-title>{{myData.location}}</v-list-item-title>
+                          <v-list-item-title>{{
+                            myData.location
+                          }}</v-list-item-title>
                         </v-list-item-content>
                       </v-list-item>
                     </v-list>
@@ -65,8 +69,8 @@
                       <drakolis-emoji :emoji="lang[1]"></drakolis-emoji>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title>{{lang[0]}}</v-list-item-title>
-                      <v-list-item-subtitle>{{lang[2]}}</v-list-item-subtitle>
+                      <v-list-item-title>{{ lang[0] }}</v-list-item-title>
+                      <v-list-item-subtitle>{{ lang[2] }}</v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -111,7 +115,7 @@
                       <drakolis-emoji :emoji="like[1]"></drakolis-emoji>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title>{{like[0]}}</v-list-item-title>
+                      <v-list-item-title>{{ like[0] }}</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -121,12 +125,15 @@
               </v-card-title>
               <v-card-text>
                 <v-list>
-                  <v-list-item v-for="dislike in myData.dislikes" :key="dislike[0]">
+                  <v-list-item
+                    v-for="dislike in myData.dislikes"
+                    :key="dislike[0]"
+                  >
                     <v-list-item-icon>
                       <drakolis-emoji :emoji="dislike[1]"></drakolis-emoji>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title>{{dislike[0]}}</v-list-item-title>
+                      <v-list-item-title>{{ dislike[0] }}</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -153,12 +160,12 @@
                     @click="getContactOnClickAction(contact)"
                     :color="getContactColor(contact.type)"
                   >
-                    <v-icon>{{getContactIcon(contact.type)}}</v-icon>
+                    <v-icon>{{ getContactIcon(contact.type) }}</v-icon>
                   </v-btn>
                 </template>
-                <span style="text-transform: capitalize;">
-                  {{getContactTooltip(contact.type)}}
-                </span>
+                <span style="text-transform: capitalize;">{{
+                  getContactTooltip(contact.type)
+                }}</span>
               </v-tooltip>
             </v-flex>
           </template>
@@ -169,10 +176,13 @@
         <v-divider></v-divider>
       </v-flex>
 
-      <v-flex xs12>
+      <v-flex xs12 v-if="lastFMSettings">
         <v-flex xs12 sm6>
           <last-fm
-            :account="myData && myData.apis && myData.apis.find(i => i.type === 'lastfm').param"
+            :account="
+              myData &&
+                myData.apis &&
+                myData.apis.find(i => i.type === 'lastfm').param"
           ></last-fm>
         </v-flex>
       </v-flex>
@@ -183,17 +193,12 @@
 </template>
 
 <script>
-import { API_HOST } from "../config/index";
-import { BreedingRhombusSpinner } from "epic-spinners";
-import TimelineItemExpandable from "../components/InfoNew/TimelineItemExpandable";
-import DrakolisEmoji from "../components/DrakolisEmoji";
+import DrakolisEmoji from "@/components/DrakolisEmoji";
 import LastFM from "@/components/InfoNew/LastFM";
+import { mapGetters } from "vuex";
 
-const getFamilyDataURL = API_HOST + "/family";
 export default {
   components: {
-    "breeding-rhombus-spinner": BreedingRhombusSpinner,
-    "expandable-timeline-item": TimelineItemExpandable,
     "drakolis-emoji": DrakolisEmoji,
     "last-fm": LastFM
   },
@@ -203,6 +208,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["lastFMSettings"]),
     nameSizeClass() {
       return [/*'sm',*/ "xs"].includes(this.$vuetify.breakpoint.name)
         ? "my-3 display-4"

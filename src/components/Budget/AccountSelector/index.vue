@@ -1,13 +1,6 @@
 <template>
-  <v-menu
-    v-model="menu"
-    :close-on-content-click="false"
-    style="width: 100%"
-  >
-    <selected-item
-      slot="activator"
-      :account="selectedAccount"
-    />
+  <v-menu v-model="menu" :close-on-content-click="false" style="width: 100%">
+    <selected-item slot="activator" :account="selectedAccount" />
 
     <v-card>
       <v-list class="pt-0">
@@ -18,11 +11,10 @@
           @selectValue="onSelectAccount"
           @deleteValue="onDeleteAccount"
         />
-        <v-divider class="mb-2"/>
+        <v-divider class="mb-2" />
         <list-item-new />
       </v-list>
     </v-card>
-
   </v-menu>
 </template>
 
@@ -36,12 +28,12 @@ export default {
   data() {
     return {
       menu: false
-    }
+    };
   },
   components: {
-    'selected-item': SelectorSelectedItem,
-    'list-item': SelectorItem,
-    'list-item-new': SelectorItemNew
+    "selected-item": SelectorSelectedItem,
+    "list-item": SelectorItem,
+    "list-item-new": SelectorItemNew
   },
   props: ["selectedAccount", "accounts"],
   methods: {
@@ -50,13 +42,13 @@ export default {
     },
     onSelectAccount(accountId) {
       this.menu = false;
-      this.$emit('selectValue', accountId);
+      this.$emit("selectValue", accountId);
     }
   },
   computed: {
     accountsSorted() {
-      const ar = this.accounts.sort(
-        (a, b) => (a.id === this.selectedAccount.id ? -1 : 1)
+      const ar = this.accounts.sort((a, b) =>
+        a.id === this.selectedAccount.id ? -1 : 1
       );
       return ar;
     }

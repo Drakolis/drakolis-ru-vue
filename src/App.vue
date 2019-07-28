@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       loaded: false
-    }
+    };
   },
   name: "App",
   components: {
@@ -34,16 +34,12 @@ export default {
   },
   mounted() {
     Promise.all([
-      this.$api.settings
-        .loadAppSettings()
-        .then(data => {
-          this.$store.commit('loadSettings', data);
-        })
-    ])
-    .then(() => {
+      this.$api.settings.loadAppSettings().then(data => {
+        this.$store.commit("loadSettings", data);
+      })
+    ]).then(() => {
       this.loaded = true;
     });
-    this.loaded = true;
     //Error notify
     [
       UI_EVENTS.ERROR_DEVELOPMENT,

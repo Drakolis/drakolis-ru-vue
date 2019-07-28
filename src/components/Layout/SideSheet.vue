@@ -9,7 +9,6 @@
     disable-resize-watcher
     :temporary="!displayApp"
   >
-
     <v-expansion-panels>
       <v-expansion-panel
         v-for="feature in settings"
@@ -19,10 +18,10 @@
         ripple
       >
         <div slot="header">
-          <v-icon>{{feature.icon}}</v-icon>
+          <v-icon>{{ feature.icon }}</v-icon>
         </div>
         <div slot="header">
-          {{feature.name}}
+          {{ feature.name }}
         </div>
         <v-card>
           <v-card-text class="py-0">
@@ -45,7 +44,6 @@
         </v-card>
       </v-expansion-panel>
     </v-expansion-panels>
-
   </v-navigation-drawer>
 </template>
 

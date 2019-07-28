@@ -1,8 +1,6 @@
 <template>
   <v-card>
-    <v-toolbar
-      dense
-      color="red darken-3">
+    <v-toolbar dense color="red darken-3">
       <v-toolbar-title>Last.FM</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -14,16 +12,10 @@
         <v-icon>refresh</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-card-text
-      style="height: 760px"
-    >
+    <v-card-text style="height: 760px">
       <v-tabs-items v-model="selectedTab">
-        <v-tab-item
-          v-for="tab in tabs"
-          :key="tab.code"
-          :value="tab.code"
-        >
-          <track-list v-if="account" :method="tab.method" :account="account"/>
+        <v-tab-item v-for="tab in tabs" :key="tab.code" :value="tab.code">
+          <track-list v-if="account" :method="tab.method" :account="account" />
         </v-tab-item>
       </v-tabs-items>
     </v-card-text>
@@ -33,18 +25,13 @@
       icons-and-text
       slider-color="white"
     >
-      <v-tab
-        v-for="tab in tabs"
-        :key="tab.code"
-        :href="`#${tab.code}`"
-      >
-        {{tab.name}}
-        <v-icon>{{tab.icon}}</v-icon>
+      <v-tab v-for="tab in tabs" :key="tab.code" :href="`#${tab.code}`">
+        {{ tab.name }}
+        <v-icon>{{ tab.icon }}</v-icon>
       </v-tab>
     </v-tabs>
   </v-card>
 </template>
-
 
 <script>
 import TrackList from "./TrackList";

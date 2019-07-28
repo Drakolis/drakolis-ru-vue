@@ -1,8 +1,5 @@
 <template>
-  <v-list-tile
-    avatar
-    @click="() => {}"
-  >
+  <v-list-tile avatar @click="() => {}">
     <v-list-tile-avatar>
       <v-avatar size="48" color="green">
         <v-icon dark>add</v-icon>

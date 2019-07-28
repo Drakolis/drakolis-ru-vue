@@ -1,33 +1,36 @@
 <template>
   <v-container>
-    <v-layout
-      wrap
-    >
+    <v-layout wrap>
       <v-flex xs12 class="py-5" v-if="!pageLoaded">
-        <breeding-rhombus-spinner style="margin: auto" :animation-duration="2000" :size="65" color="#00A8AB" />
+        <breeding-rhombus-spinner
+          style="margin: auto"
+          :animation-duration="2000"
+          :size="65"
+          color="#00A8AB"
+        />
       </v-flex>
       <template v-for="person in personData">
         <v-flex xs3 :key="person.id + '_general'" class="px-1">
           <v-card>
-            <v-img
-              :src="person.photoUrl"
-              aspect-ratio="1"
-            ></v-img>
+            <v-img :src="person.photoUrl" aspect-ratio="1"></v-img>
             <v-card-title primary-title>
               <h3 class="display-1 mb-0">
-                {{person.name}}
+                {{ person.name }}
               </h3>
             </v-card-title>
             <v-card-text class="pt-0">
               <ul class="unstyled">
                 <li>
-                  <span class="font-weight-bold mono-font">DOB:</span>{{person.dateOfBirth}}
+                  <span class="font-weight-bold mono-font">DOB:</span
+                  >{{ person.dateOfBirth }}
                 </li>
                 <li>
-                  <span class="font-weight-bold mono-font">OCC:</span>{{person.occupation}}
+                  <span class="font-weight-bold mono-font">OCC:</span
+                  >{{ person.occupation }}
                 </li>
                 <li>
-                  <span class="font-weight-bold mono-font">ABT:</span>{{person.about}}
+                  <span class="font-weight-bold mono-font">ABT:</span
+                  >{{ person.about }}
                 </li>
               </ul>
             </v-card-text>
@@ -36,17 +39,19 @@
 
         <v-flex xs1 :key="person.id + '_social'" class="px-1">
           <v-layout wrap justify-center>
-            <template
-              v-for="contact in person.contacts"
-            >
+            <template v-for="contact in person.contacts">
               <v-tooltip bottom :key="contact.type">
-                <v-btn fab large
+                <v-btn
+                  fab
+                  large
                   slot="activator"
                   @click="getContactOnClickAction(contact)"
                   :color="getContactColor(contact.type)"
-                ><v-icon>{{getContactIcon(contact.type)}}</v-icon>
+                  ><v-icon>{{ getContactIcon(contact.type) }}</v-icon>
                 </v-btn>
-                <span style="text-transform: capitalize;" class="subheading">{{getContactTooltip(contact.type)}}</span>
+                <span style="text-transform: capitalize;" class="subheading">{{
+                  getContactTooltip(contact.type)
+                }}</span>
               </v-tooltip>
             </template>
           </v-layout>
@@ -57,8 +62,7 @@
             <v-card-title primary-title>
               <h4 class="headline">Experience</h4>
             </v-card-title>
-            <v-card-text class="pt-0">
-            </v-card-text>
+            <v-card-text class="pt-0"> </v-card-text>
           </v-card>
         </v-flex>
 
@@ -79,7 +83,6 @@
           <v-divider class="mt-4"></v-divider>
         </v-flex>
       </template>
-
     </v-layout>
   </v-container>
 </template>

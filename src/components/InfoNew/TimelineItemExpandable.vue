@@ -1,40 +1,40 @@
 <template>
-<v-timeline-item :color="entry.color || 'primary'">
-  <span slot="opposite" class="subheading font-weight-medium">
-    {{dates}}
-  </span>
-  <v-card :class="entry.color || 'primary'">
-    <v-card-title primary-title :class="`${entry.color || 'primary'} py-3`">
-      <a
-        class="text-xs-left white--text"
-        @click="buttonClick"
-      >
-        <span class="title">
-          <v-icon>{{buttonIcon}}</v-icon>
-          {{entry.name}}
-          <span class="title font-weight-light">
-            <v-icon>mdi-at</v-icon>
-            {{entry.company.name}}
-            <small class="hidden-sm-and-up">({{dates}})</small>
+  <v-timeline-item :color="entry.color || 'primary'">
+    <span slot="opposite" class="subheading font-weight-medium">
+      {{ dates }}
+    </span>
+    <v-card :class="entry.color || 'primary'">
+      <v-card-title primary-title :class="`${entry.color || 'primary'} py-3`">
+        <a class="text-xs-left white--text" @click="buttonClick">
+          <span class="title">
+            <v-icon>{{ buttonIcon }}</v-icon>
+            {{ entry.name }}
+            <span class="title font-weight-light">
+              <v-icon>mdi-at</v-icon>
+              {{ entry.company.name }}
+              <small class="hidden-sm-and-up">({{ dates }})</small>
+            </span>
           </span>
-        </span>
-      </a>
-    </v-card-title>
-    <transition name="accordion"
-      v-on:before-enter="beforeEnter" v-on:enter="enter"
-      v-on:before-leave="beforeLeave" v-on:leave="leave"
-      v-if="isExpandable"
-    >
-      <v-card-text class="secondary accordion-body" v-if="open">
-        <ul class="body-2" >
-          <li v-for="point in entry.points">
-            {{point}}
-          </li>
-        </ul>
-      </v-card-text>
-    </transition>
-  </v-card>
-</v-timeline-item>
+        </a>
+      </v-card-title>
+      <transition
+        name="accordion"
+        v-on:before-enter="beforeEnter"
+        v-on:enter="enter"
+        v-on:before-leave="beforeLeave"
+        v-on:leave="leave"
+        v-if="isExpandable"
+      >
+        <v-card-text class="secondary accordion-body" v-if="open">
+          <ul class="body-2">
+            <li v-for="point in entry.points">
+              {{ point }}
+            </li>
+          </ul>
+        </v-card-text>
+      </transition>
+    </v-card>
+  </v-timeline-item>
 </template>
 
 <script>

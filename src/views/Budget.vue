@@ -1,27 +1,20 @@
 <template>
   <v-container style="height:100%">
-    <v-layout
-      wrap
-      v-if="!pageLoaded"
-    >
+    <v-layout wrap v-if="!pageLoaded">
       <v-flex xs12 class="py-5">
-        <breeding-rhombus-spinner style="margin: auto" :animation-duration="2000" :size="65" color="#00A8AB" />
+        <breeding-rhombus-spinner
+          style="margin: auto"
+          :animation-duration="2000"
+          :size="65"
+          color="#00A8AB"
+        />
       </v-flex>
     </v-layout>
 
-    <v-layout
-      justify-space-between
-      row
-      fill-height
-      v-if="pageLoaded"
-    >
+    <v-layout justify-space-between row fill-height v-if="pageLoaded">
       <v-flex xs7 class="pr-1">
-        <v-layout
-          justify-start
-          column
-        >
+        <v-layout justify-start column>
           <v-flex xs12 class="mb-2">
-
             <v-card>
               <v-card-text>
                 <v-layout>
@@ -30,7 +23,11 @@
                     <account-selector
                       :selectedAccount="selectedAccount"
                       :accounts="accounts"
-                      @selectValue="(val) => {selectedAccountId = val}"
+                      @selectValue="
+                        val => {
+                          selectedAccountId = val;
+                        }
+                      "
                     />
                   </v-flex>
                 </v-layout>
@@ -38,7 +35,6 @@
             </v-card>
           </v-flex>
           <v-flex xs12 class="mb-2">
-
             <v-card>
               <v-card-actions>
                 <v-btn flat color="green">
@@ -96,32 +92,26 @@
                 </v-data-table>
               </v-card-text>
             </v-card>
-
           </v-flex>
         </v-layout>
       </v-flex>
       <v-flex xs5 class="pl-1">
-        <v-layout
-          justify-start
-          column
-        >
+        <v-layout justify-start column>
           <v-flex xs12 class="mb-2">
             <v-card>
-              <v-card-actions>
-              </v-card-actions>
+              <v-card-actions> </v-card-actions>
               <v-card-title primary-title class="py-1">
                 <h2>Expenses Categories Graph</h2>
               </v-card-title>
               <v-card-text>
-                <chart-demo/>
+                <chart-demo />
               </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
       </v-flex>
-
     </v-layout>
-    <popups :updateAccounts="updateAccounts"/>
+    <popups :updateAccounts="updateAccounts" />
   </v-container>
 </template>
 
@@ -182,9 +172,9 @@ export default {
           this.selectedAccountId &&
           this.accounts.find(account => account.id === this.selectedAccountId)
             ? this.selectedAccountId
-            : (this.accounts.length > 0
-              ? this.accounts[0].id
-              : 0);
+            : this.accounts.length > 0
+            ? this.accounts[0].id
+            : 0;
         this.updateOperations();
       });
     },
@@ -211,8 +201,9 @@ export default {
     },
     selectedAccount() {
       return (
-        this.accounts &&
-        this.accounts.find(acc => acc.id === this.selectedAccountId) || {}
+        (this.accounts &&
+          this.accounts.find(acc => acc.id === this.selectedAccountId)) ||
+        {}
       );
     },
     income() {

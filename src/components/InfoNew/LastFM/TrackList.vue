@@ -2,32 +2,27 @@
   <div>
     <v-list two-line v-if="loaded">
       <template v-for="item in data">
-        <div
-          :key="item.title"
-        >
-          <v-list-tile
-            avatar
-            :href="item.url"
-            target="_blank"
-          >
+        <div :key="item.title">
+          <v-list-tile avatar :href="item.url" target="_blank">
             <v-list-tile-avatar>
-              <img v-if="getAvatarForEntry(item)" :src="getAvatarForEntry(item)">
+              <img
+                v-if="getAvatarForEntry(item)"
+                :src="getAvatarForEntry(item)"
+              />
               <v-icon v-else class="primary">music_video</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>{{item.name}}</v-list-tile-title>
+              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
               <v-list-tile-sub-title>
                 <span class="text--primary">
-                  {{item.artist['#text'] || item.artist.name}}
+                  {{ item.artist["#text"] || item.artist.name }}
                 </span>
-                <span v-if="item.album"> - {{item.album['#text']}}</span>
+                <span v-if="item.album"> - {{ item.album["#text"] }}</span>
               </v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <small>
-                {{
-                  getDateForEntry(item)
-                }}
+                {{ getDateForEntry(item) }}
               </small>
             </v-list-tile-action>
           </v-list-tile>
@@ -47,7 +42,7 @@
 
 <script>
 import { BreedingRhombusSpinner } from "epic-spinners";
-import { UI_EVENTS } from '../../../bus';
+import { UI_EVENTS } from "../../../bus";
 
 export default {
   components: {
@@ -70,15 +65,14 @@ export default {
         : item.date["#text"];
     },
     reloadData() {
-      this.$api.external.lastfm[this.method](this.account)
-        .then(resp => {
-          if (!resp.data.tracks) {
-            this.$bus.$emit(UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL);
-            return;
-          }
-          this.data = resp.body.tracks;
-          this.loaded = true;
-        });
+      this.$api.external.lastfm[this.method](this.account).then(resp => {
+        if (!resp.data.tracks) {
+          this.$bus.$emit(UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL);
+          return;
+        }
+        this.data = resp.body.tracks;
+        this.loaded = true;
+      });
     }
   },
   mounted() {

@@ -1,9 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      {{$t('global.auth.signIn')}}
+      {{ $t("global.auth.signIn") }}
     </v-card-title>
-    <v-divider/>
+    <v-divider />
     <v-card-text>
       <v-form>
         <v-text-field
@@ -22,8 +22,10 @@
       </v-form>
     </v-card-text>
     <v-card-actions>
-      <v-btn text @click="switchMethod">{{$t('global.cancel')}}</v-btn>
-      <v-btn text color="primary" @click="singInSubmit">{{$t('global.auth.signIn')}}</v-btn>
+      <v-btn text @click="switchMethod">{{ $t("global.cancel") }}</v-btn>
+      <v-btn text color="primary" @click="singInSubmit">{{
+        $t("global.auth.signIn")
+      }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

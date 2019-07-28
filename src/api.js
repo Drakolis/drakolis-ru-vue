@@ -94,9 +94,10 @@ export default vue => {
         return vue.$http
           .get(METHOD_URLS.settings.public())
           .catch(() => {
-            vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
+            // vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
+            return new Promise(resolve => setTimeout(() => resolve(), 1000));
           })
-          .then(res => res.body.data);
+          .then(res => (res && res.body && res.body.data) || false);
       }
     },
     user: {

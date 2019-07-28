@@ -1,24 +1,22 @@
 <template>
   <v-dialog v-model="open" max-width="500">
     <v-card v-if="account">
-      <v-card-title :style="titleStyle" >
-        <h3>Are you shure you want to delete account: <b>'{{this.account.name}}'?</b></h3>
+      <v-card-title :style="titleStyle">
+        <h3>
+          Are you shure you want to delete account:
+          <b>'{{ this.account.name }}'?</b>
+        </h3>
       </v-card-title>
       <v-card-text>
-        This action cannot be undone. All operations data will be lost with this account. If accont is no longer usable use <b>'Close Account'</b> option instead.
+        This action cannot be undone. All operations data will be lost with this
+        account. If accont is no longer usable use <b>'Close Account'</b> option
+        instead.
       </v-card-text>
       <v-card-actions>
-        <v-btn
-          @click="confirm()"
-          color="red darken-4"
-          :loading="deleting"
-        >
+        <v-btn @click="confirm()" color="red darken-4" :loading="deleting">
           Delete
         </v-btn>
-        <v-btn
-          @click="cancel()"
-          color="secondary"
-        >
+        <v-btn @click="cancel()" color="secondary">
           Cancel
         </v-btn>
       </v-card-actions>

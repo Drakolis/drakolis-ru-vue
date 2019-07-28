@@ -1,5 +1,5 @@
 <template>
-    <vue-snotify></vue-snotify>
+  <vue-snotify></vue-snotify>
 </template>
 
 <script>

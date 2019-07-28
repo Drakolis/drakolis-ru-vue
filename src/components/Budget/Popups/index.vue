@@ -1,7 +1,7 @@
 <template>
   <div>
-    <delete-account-dialog :updateAccounts="updateAccounts"/>
-    <edit-account-dialog  :updateAccounts="updateAccounts"/>
+    <delete-account-dialog :updateAccounts="updateAccounts" />
+    <edit-account-dialog :updateAccounts="updateAccounts" />
   </div>
 </template>
 
