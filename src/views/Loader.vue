@@ -16,7 +16,7 @@
           <SemipolarSpinner
             :animation-duration="2000"
             :size="120"
-            color="#26A69A"
+            color="#C62828"
             style="margin: auto"
           />
           <span class="mt-4 text-center title">{{ $t("global.loading") }}</span>
