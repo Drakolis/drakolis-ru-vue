@@ -14,8 +14,8 @@ export default new Vuex.Store({
     settings: false
   },
   getters: {
-    loggedIn() {
-      return true;
+    loggedIn({ loggedIn }) {
+      return loggedIn;
     },
     lastFMSettings(state) {
       return state.settings &&
