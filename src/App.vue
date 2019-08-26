@@ -13,48 +13,48 @@
 </template>
 
 <script>
-import { UI_EVENTS } from "./bus.js";
-import SideSheet from "./components/Layout/SideSheet";
-import MenuBar from "./components/Layout/MenuBar";
-import Notifications from "./components/Layout/Notifications";
-import Loader from "./views/Loader";
+import { UI_EVENTS } from './bus';
+import SideSheet from './components/Layout/SideSheet.vue';
+import MenuBar from './components/Layout/MenuBar.vue';
+import Notifications from './components/Layout/Notifications.vue';
+import Loader from './views/Loader.vue';
 
 export default {
+  name: 'App',
+  components: {
+    'side-sheet': SideSheet,
+    'menu-bar': MenuBar,
+    notifications: Notifications,
+    loader: Loader,
+  },
   data() {
     return {
-      loaded: false
+      loaded: false,
     };
-  },
-  name: "App",
-  components: {
-    "side-sheet": SideSheet,
-    "menu-bar": MenuBar,
-    notifications: Notifications,
-    loader: Loader
   },
   mounted() {
     Promise.all([
-      this.$api.settings.loadAppSettings().then(data => {
-        this.$store.commit("loadSettings", data);
-      })
+      this.$api.settings.loadAppSettings().then((data) => {
+        this.$store.commit('loadSettings', data);
+      }),
     ]).then(() => {
       this.loaded = true;
     });
-    //Error notify
+    // Error notify
     [
       UI_EVENTS.ERROR_DEVELOPMENT,
       UI_EVENTS.ERROR_RESTRICTED,
       UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL,
-      UI_EVENTS.ERROR_CONFIG
-    ].forEach(error => {
+      UI_EVENTS.ERROR_CONFIG,
+    ].forEach((error) => {
       this.$bus.$on(error, () => {
         this.$snotify.error(
           this.$t(`${error}.info`),
-          this.$t(`${error}.title`)
+          this.$t(`${error}.title`),
         );
       });
     });
-  }
+  },
 };
 </script>
 

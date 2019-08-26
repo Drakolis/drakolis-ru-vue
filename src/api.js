@@ -1,90 +1,85 @@
-import { UI_EVENTS } from "./bus.js";
-import { API_HOST } from "@/config";
+import { UI_EVENTS } from './bus';
+import { API_HOST } from '@/config';
 
 const METHOD_URLS = {
   settings: {
     public() {
-      return API_HOST + "v1/public/settings";
+      return `${API_HOST}v1/public/settings`;
     },
     index() {
-      return API_HOST + "v1/private/settings";
+      return `${API_HOST}v1/private/settings`;
     },
     item(id) {
-      return API_HOST + `v1/private/settings/${id}`;
-    }
+      return `${API_HOST}v1/private/settings/${id}`;
+    },
   },
   user: {
     signIn() {
-      return API_HOST + "v1/public/signIn";
+      return `${API_HOST}v1/public/signIn`;
     },
     signUp() {
-      return API_HOST + "v1/public/signUp";
+      return `${API_HOST}v1/public/signUp`;
     },
     showMe() {
-      return API_HOST + "v1/private/me";
-    }
+      return `${API_HOST}v1/private/me`;
+    },
   },
   budget: {
     account: {
       index() {
-        return API_HOST + `v1/private/budget/accounts`;
+        return `${API_HOST}v1/private/budget/accounts`;
       },
       item(id) {
-        return API_HOST + `v1/private/budget/accounts/${id}`;
+        return `${API_HOST}v1/private/budget/accounts/${id}`;
       },
       operations(id) {
-        return API_HOST + `v1/private/budget/accounts/${id}/operations`;
-      }
+        return `${API_HOST}v1/private/budget/accounts/${id}/operations`;
+      },
     },
     categories: {
       showAll() {
-        return API_HOST + `v1/private/budget/categories`;
-      }
-    }
+        return `${API_HOST}v1/private/budget/categories`;
+      },
+    },
   },
   external: {
     lastfm: {
       recent(account) {
-        return API_HOST + `v1/proxy/lastfm/${account}/recent`;
+        return `${API_HOST}v1/proxy/lastfm/${account}/recent`;
       },
       loved(account) {
-        return API_HOST + `v1/proxy/lastfm/${account}/loved`;
-      }
-    }
-  }
+        return `${API_HOST}v1/proxy/lastfm/${account}/loved`;
+      },
+    },
+  },
 };
 
-const authCookieName = "JWT";
+const authCookieName = 'JWT';
 
-export default vue => {
+export default (vue) => {
   if (!vue.$cookies || !vue.$http) {
-    console.error("Unable to initiate API");
-    return;
+    return false;
   }
 
   const setAuthCookie = (jwt, timeoutSeconds = 30 * 24 * 60 * 60) => {
-    if (jwt) vue.$cookies.set(authCookieName, jwt, timeoutSeconds + "s");
+    if (jwt) vue.$cookies.set(authCookieName, jwt, `${timeoutSeconds}s`);
     else vue.$cookies.remove(authCookieName);
   };
-  const getCookie = () => {
-    return vue.$cookies.get(authCookieName);
-  };
-  const setSettings = (cookie = null) => {
-    return {
-      headers: {
-        Authorization: "Bearer " + (cookie || getCookie())
-      }
-    };
-  };
+  const getCookie = () => vue.$cookies.get(authCookieName);
+  const setSettings = (cookie = null) => ({
+    headers: {
+      Authorization: `Bearer ${cookie || getCookie()}`,
+    },
+  });
 
-  const signIn = jwt => {
+  const signIn = (jwt) => {
     setAuthCookie(jwt);
-    vue.$store.commit("signIn");
+    vue.$store.commit('signIn');
     return jwt;
   };
   const signOut = () => {
     setAuthCookie(null);
-    vue.$store.commit("signOut");
+    vue.$store.commit('signOut');
     return true;
   };
 
@@ -93,12 +88,10 @@ export default vue => {
       loadAppSettings() {
         return vue.$http
           .get(METHOD_URLS.settings.public())
-          .catch(() => {
-            // vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
-            return new Promise(resolve => setTimeout(() => resolve(), 1000));
-          })
+          .catch(() => new Promise(resolve => setTimeout(() => resolve(), 1000)))
+          // vue.$bus.$emit(UI_EVENTS.ERROR_CONFIG);
           .then(res => (res && res.body && res.body.data) || false);
-      }
+      },
     },
     user: {
       signIn(email, password) {
@@ -111,10 +104,10 @@ export default vue => {
           });
       },
 
-      signUp(email, password, password_confirmation) {
+      signUp(email, password, passwordConfirmation) {
         vue.$http
           .get(METHOD_URLS.user.signUp(), {
-            user: { email, password, password_confirmation }
+            user: { email, password, password_confirmation: passwordConfirmation },
           })
           .then(res => signIn(res.body.jwt))
           .catch(() => {});
@@ -133,7 +126,7 @@ export default vue => {
         return vue.$http
           .get(METHOD_URLS.user.show(id), setSettings())
           .catch(() => signOut());
-      }
+      },
     },
     budget: {
       account: {
@@ -156,15 +149,15 @@ export default vue => {
           return vue.$http
             .get(METHOD_URLS.budget.account.operations(id), setSettings())
             .catch(() => {});
-        }
+        },
       },
       categories: {
         showAll() {
           return vue.$http
             .get(METHOD_URLS.budget.categories.showAll(), setSettings())
             .catch(() => {});
-        }
-      }
+        },
+      },
     },
     external: {
       lastfm: {
@@ -177,9 +170,9 @@ export default vue => {
           return vue.$http
             .get(METHOD_URLS.external.lastfm.loved(account), setSettings())
             .catch(() => {});
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   return api;

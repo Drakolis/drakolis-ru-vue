@@ -3,7 +3,7 @@
     <v-toolbar dense color="red darken-3">
       <v-toolbar-title>Last.FM</v-toolbar-title>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-btn icon :href="hrefAccount" target="_blank">
         <v-icon>mdi-lastfm</v-icon>
@@ -20,8 +20,8 @@
       </v-tabs-items>
     </v-card-text>
     <v-tabs
-      fixed-tabs
       v-model="selectedTab"
+      fixed-tabs
       icons-and-text
       slider-color="white"
     >
@@ -34,37 +34,37 @@
 </template>
 
 <script>
-import TrackList from "./TrackList";
+import TrackList from './TrackList.vue';
 
 export default {
   components: {
-    "track-list": TrackList
+    'track-list': TrackList,
   },
-  props: ["account"],
+  props: ['account'],
   data() {
     return {
-      selectedTab: "tab-recent",
-      color: "red darken-3",
+      selectedTab: 'tab-recent',
+      color: 'red darken-3',
       tabs: [
         {
-          name: "Recent",
-          icon: "schedule",
-          code: "tab-recent",
-          method: "recent"
+          name: 'Recent',
+          icon: 'schedule',
+          code: 'tab-recent',
+          method: 'recent',
         },
         {
-          name: "Loved",
-          icon: "favorite",
-          code: "tab-loved",
-          method: "loved"
-        }
-      ]
+          name: 'Loved',
+          icon: 'favorite',
+          code: 'tab-loved',
+          method: 'loved',
+        },
+      ],
     };
   },
   computed: {
     hrefAccount() {
-      return "https://www.last.fm/user/" + this.account;
-    }
-  }
+      return `https://www.last.fm/user/${this.account}`;
+    },
+  },
 };
 </script>

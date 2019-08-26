@@ -18,16 +18,16 @@
         </a>
       </v-card-title>
       <transition
-        name="accordion"
-        v-on:before-enter="beforeEnter"
-        v-on:enter="enter"
-        v-on:before-leave="beforeLeave"
-        v-on:leave="leave"
         v-if="isExpandable"
+        name="accordion"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @before-leave="beforeLeave"
+        @leave="leave"
       >
-        <v-card-text class="secondary accordion-body" v-if="open">
+        <v-card-text v-if="open" class="secondary accordion-body">
           <ul class="body-2">
-            <li v-for="point in entry.points">
+            <li v-for="point in entry.points" :key="point">
               {{ point }}
             </li>
           </ul>
@@ -39,12 +39,29 @@
 
 <script>
 export default {
+  props: {
+    entry: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
-      open: false
+      open: false,
     };
   },
-  props: ["entry"],
+  computed: {
+    buttonIcon() {
+      if (!this.isExpandable) return false;
+      return this.open ? 'remove' : 'add';
+    },
+    dates() {
+      return `${this.entry.dateFrom} - ${this.entry.dateTo || 'Present'}`;
+    },
+    isExpandable() {
+      return this.entry.points.length;
+    },
+  },
   methods: {
     buttonClick() {
       if (!this.isExpandable) return;
@@ -56,31 +73,23 @@ export default {
     // leave: function(el, done) {
     //   $(el).slideUp(150, done);
     // },
-    beforeEnter: function(el) {
-      el.style.height = "0";
+    beforeEnter(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = '0';
     },
-    enter: function(el) {
-      el.style.height = el.scrollHeight + 20 + "px";
+    enter(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = `${el.scrollHeight + 20}px`;
     },
-    beforeLeave: function(el) {
-      el.style.height = el.scrollHeight + 20 + "px";
+    beforeLeave(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = `${el.scrollHeight + 20}px`;
     },
-    leave: function(el) {
-      el.style.height = "0";
-    }
+    leave(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = '0';
+    },
   },
-  computed: {
-    buttonIcon() {
-      if (!this.isExpandable) return;
-      return this.open ? "remove" : "add";
-    },
-    dates() {
-      return `${this.entry.dateFrom} - ${this.entry.dateTo || "Present"}`;
-    },
-    isExpandable() {
-      return this.entry.points.length;
-    }
-  }
 };
 </script>
 

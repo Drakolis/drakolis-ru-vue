@@ -27,13 +27,19 @@
 </template>
 
 <script>
-import { SemipolarSpinner } from "epic-spinners";
+import { SemipolarSpinner } from 'epic-spinners';
 
 export default {
   components: {
-    SemipolarSpinner
+    SemipolarSpinner,
   },
-  props: ["appReady"]
+  props:
+    {
+      appReady: {
+        type: Boolean,
+        default: false,
+      },
+    },
 };
 </script>
 

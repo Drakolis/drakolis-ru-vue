@@ -4,7 +4,7 @@
       <span class="drakolis-font">Drakolis</span>
       <span class="font-weight-light">.PW</span>
     </v-toolbar-title>
-    <v-spacer></v-spacer>
+    <v-spacer />
 
     <v-menu
       v-model="signInVisible"
@@ -20,12 +20,17 @@
           <v-icon>input</v-icon>
         </v-btn>
       </template>
-      <login-form :switchMethod="loginFormSwitch" />
+      <login-form :switch-method="loginFormSwitch" />
     </v-menu>
 
-    <v-tooltip bottom v-if="$store.state.loggedIn">
+    <v-tooltip v-if="$store.state.loggedIn" bottom>
       <template v-slot:activator="{ on }">
-        <v-btn text icon v-on="on" @click="settingSwitch">
+        <v-btn
+          text
+          icon
+          v-on="on"
+          @click="settingSwitch"
+        >
           <v-icon>settings</v-icon>
         </v-btn>
       </template>
@@ -35,16 +40,16 @@
 </template>
 
 <script>
-import { UI_EVENTS } from "@/bus.js";
-import LoginForm from "./LoginForm";
+import { UI_EVENTS } from '@/bus';
+import LoginForm from './LoginForm.vue';
 
 export default {
   components: {
-    "login-form": LoginForm
+    'login-form': LoginForm,
   },
   data() {
     return {
-      signInVisible: false
+      signInVisible: false,
     };
   },
   methods: {
@@ -53,7 +58,7 @@ export default {
     },
     loginFormSwitch() {
       this.signInVisible = !this.signInVisible;
-    }
-  }
+    },
+  },
 };
 </script>

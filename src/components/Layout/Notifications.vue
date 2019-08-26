@@ -1,16 +1,16 @@
 <template>
-  <vue-snotify></vue-snotify>
+  <vue-snotify />
 </template>
 
 <script>
-import Vue from "vue";
-import Snotify, { SnotifyPosition } from "vue-snotify";
-import "vue-snotify/styles/simple.css";
+import Vue from 'vue';
+import Snotify, { SnotifyPosition } from 'vue-snotify';
+import 'vue-snotify/styles/simple.css';
 
 const options = {
   toast: {
-    position: SnotifyPosition.leftTop
-  }
+    position: SnotifyPosition.leftTop,
+  },
 };
 
 Vue.use(Snotify, options);

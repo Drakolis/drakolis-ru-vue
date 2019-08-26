@@ -1,0 +1,52 @@
+{
+  "settings": {
+
+  },
+  "chats": [
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": false,
+      "displayName": "Mika Drakolis",
+      "avatar": "",
+      "id": 1,
+      "with": {}
+    },
+    {
+      "type": "group",
+      "unreadCount": 10,
+      "muted": false,
+      "displayName": "Here be Dragons!",
+      "avatar": "",
+      "id": 2,
+      "members": []
+    },
+    {
+      "type": "channel",
+      "unreadCount": 10,
+      "muted": false,
+      "displayName": "Fire from Drakolis's Ass",
+      "avatar": "",
+      "id": 3,
+      "members": []
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": false,
+      "displayName": "Mirra Lisowski",
+      "avatar": "",
+      "id": 4,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    }
+  ]
+}

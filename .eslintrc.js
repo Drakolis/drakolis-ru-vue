@@ -1,14 +1,46 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  extends: ["plugin:vue/essential", "@vue/prettier"],
+  extends: [
+    'plugin:vue/recommended',
+    '@vue/airbnb',
+  ],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
+    'no-console': 'error',
+    'no-debugger': 'error',
+    'no-return-assign': 0,
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'state',
+          'acc',
+          'e',
+          'ctx',
+          'req',
+          'request',
+          'res',
+          'response',
+          '$scope',
+        ],
+      },
+    ],
+    'vue/max-attributes-per-line': ['error', {
+      singleline: 3,
+      multiline: {
+        max: 1,
+        allowFirstLine: false,
+      },
+    }],
+    'vue/no-template-shadow': 'error',
+    'vue/require-prop-types': 'error',
+    'vue/require-default-prop': 'warn',
+    'vue/no-v-html': 'warn',
   },
   parserOptions: {
-    parser: "babel-eslint"
-  }
+    parser: 'babel-eslint',
+  },
 };

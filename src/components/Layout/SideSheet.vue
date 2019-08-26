@@ -12,8 +12,8 @@
     <v-expansion-panels>
       <v-expansion-panel
         v-for="feature in settings"
-        v-model="feature.open"
         :key="feature.feature"
+        v-model="feature.open"
         no-action
         ripple
       >
@@ -27,8 +27,8 @@
           <v-card-text class="py-0">
             <v-form>
               <v-switch
-                color="primary"
                 v-model="feature.active"
+                color="primary"
                 label="Enable Feature"
               />
               <v-text-field
@@ -37,8 +37,7 @@
                 :label="setting.name"
                 :value="setting.value"
                 filled
-              >
-              </v-text-field>
+              />
             </v-form>
           </v-card-text>
         </v-card>
@@ -48,53 +47,55 @@
 </template>
 
 <script>
-import { UI_EVENTS } from "@/bus.js";
+import { UI_EVENTS } from '@/bus';
 
 export default {
   data() {
     return {
-      show: false
+      show: false,
     };
   },
   computed: {
     displayApp() {
       switch (this.$vuetify.breakpoint.name) {
-        case "xs":
+        case 'xs':
           return false;
-        case "sm":
+        case 'sm':
           return false;
-        case "md":
+        case 'md':
           return false;
-        case "lg":
+        case 'lg':
           return true;
-        case "xl":
+        case 'xl':
+          return true;
+        default:
           return true;
       }
     },
     settings() {
       return [
         {
-          feature: "LASTFM_API",
-          name: "Last.fm Integration",
-          icon: "fab fa-lastfm",
+          feature: 'LASTFM_API',
+          name: 'Last.fm Integration',
+          icon: 'fab fa-lastfm',
           active: true,
           open: false,
           settings: [
             {
-              setting: "API_KEY",
-              name: "API Key",
-              type: "input", //TODO: Use constants
-              value: "YOUCANTSEEME"
-            }
-          ]
-        }
+              setting: 'API_KEY',
+              name: 'API Key',
+              type: 'input', // TODO: Use constants
+              value: 'YOUCANTSEEME',
+            },
+          ],
+        },
       ];
-    }
+    },
   },
   mounted() {
     this.$bus.$on(UI_EVENTS.SETTINGS_TOGGLE, () => {
       this.show = !this.show;
     });
-  }
+  },
 };
 </script>

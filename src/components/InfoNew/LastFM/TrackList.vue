@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list two-line v-if="loaded">
+    <v-list v-if="loaded" two-line>
       <template v-for="item in data">
         <div :key="item.title">
           <v-list-tile avatar :href="item.url" target="_blank">
@@ -8,8 +8,10 @@
               <img
                 v-if="getAvatarForEntry(item)"
                 :src="getAvatarForEntry(item)"
-              />
-              <v-icon v-else class="primary">music_video</v-icon>
+              >
+              <v-icon v-else class="primary">
+                music_video
+              </v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title>{{ item.name }}</v-list-tile-title>
@@ -26,7 +28,7 @@
               </small>
             </v-list-tile-action>
           </v-list-tile>
-          <v-divider></v-divider>
+          <v-divider />
         </div>
       </template>
     </v-list>
@@ -41,31 +43,34 @@
 </template>
 
 <script>
-import { BreedingRhombusSpinner } from "epic-spinners";
-import { UI_EVENTS } from "../../../bus";
+import { BreedingRhombusSpinner } from 'epic-spinners';
+import { UI_EVENTS } from '../../../bus';
 
 export default {
   components: {
-    "breeding-rhombus-spinner": BreedingRhombusSpinner
+    'breeding-rhombus-spinner': BreedingRhombusSpinner,
   },
+  props: ['account', 'method'],
   data() {
     return {
       loaded: false,
-      data: []
+      data: [],
     };
   },
-  props: ["account", "method"],
+  mounted() {
+    this.reloadData();
+  },
   methods: {
     getAvatarForEntry(item) {
-      return item.image.find(i => i.size === "medium")["#text"];
+      return item.image.find(i => i.size === 'medium')['#text'];
     },
     getDateForEntry(item) {
-      return item["@attr"] && item["@attr"].nowplaying
-        ? "Now playing"
-        : item.date["#text"];
+      return item['@attr'] && item['@attr'].nowplaying
+        ? 'Now playing'
+        : item.date['#text'];
     },
     reloadData() {
-      this.$api.external.lastfm[this.method](this.account).then(resp => {
+      this.$api.external.lastfm[this.method](this.account).then((resp) => {
         if (!resp.data.tracks) {
           this.$bus.$emit(UI_EVENTS.ERROR_EXTERNAL_SERVICE_FAIL);
           return;
@@ -73,10 +78,7 @@ export default {
         this.data = resp.body.tracks;
         this.loaded = true;
       });
-    }
+    },
   },
-  mounted() {
-    this.reloadData();
-  }
 };
 </script>

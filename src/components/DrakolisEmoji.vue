@@ -1,26 +1,30 @@
 <template>
-  <span v-html="emojify(emoji)"></span>
+  <!-- eslint-disable-next-line vue/no-v-html -->
+  <span v-html="emojify(emoji)" />
 </template>
 
 <script>
-import emojijs from "emoji-js";
+import EmojiJS from 'emoji-js';
 
-const emoji = new emojijs();
-emoji.img_set = "google";
+const emoji = new EmojiJS();
+emoji.img_set = 'google';
 emoji.allow_native = false;
 emoji.supports_css = false;
-emoji.img_sets.google.path =
-  "https://unpkg.com/emoji-datasource-google@4.0.4/img/google/64/";
-emoji.img_sets.google.sheet =
-  "https://unpkg.com/emoji-datasource-google@4.0.4/img/google/sheets-256/64.png";
+emoji.img_sets.google.path = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/64/';
+emoji.img_sets.google.sheet = 'https://unpkg.com/emoji-datasource-google@4.0.4/img/google/sheets-256/64.png';
 
 export default {
-  props: ["emoji"],
+  props: {
+    emoji: {
+      type: String,
+      required: true,
+    },
+  },
   methods: {
     emojify(string) {
       return emoji.replace_colons(string);
-    }
-  }
+    },
+  },
 };
 </script>
 

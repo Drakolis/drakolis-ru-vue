@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class=""></div>
+    <div class="" />
     <div class="terminal crt">
       <span>Test! 123</span>
     </div>

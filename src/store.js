@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -8,22 +8,22 @@ export default new Vuex.Store({
     loggedIn: false,
     features: {
       multipleAccounts: {
-        enabled: true
-      }
+        enabled: true,
+      },
     },
-    settings: false
+    settings: false,
   },
   getters: {
     loggedIn({ loggedIn }) {
       return loggedIn;
     },
     lastFMSettings(state) {
-      return state.settings &&
-        state.settings.lastfm &&
-        state.settings.lastfm.enabled
+      return state.settings
+        && state.settings.lastfm
+        && state.settings.lastfm.enabled
         ? state.settings.lastfm
         : false;
-    }
+    },
   },
   mutations: {
     signIn(state) {
@@ -36,24 +36,23 @@ export default new Vuex.Store({
       if (settings) {
         const keys = settings.map(s => s.key);
         const newSettings = {};
-        keys.forEach(k => {
+        keys.forEach((k) => {
           const setting = settings.find(s => s.key === k);
-          newSettings[k] =
-            setting.datetime !== null
-              ? setting.datetime
-              : setting.boolean !== null
+          newSettings[k] = setting.datetime !== null
+            ? setting.datetime
+            : setting.boolean !== null
               ? setting.boolean
               : setting.float !== null
-              ? setting.float
-              : setting.integer !== null
-              ? setting.integer
-              : setting.string !== null
-              ? setting.string
-              : null;
+                ? setting.float
+                : setting.integer !== null
+                  ? setting.integer
+                  : setting.string !== null
+                    ? setting.string
+                    : null;
         });
         state.settings = newSettings;
       }
-    }
+    },
   },
-  actions: {}
+  actions: {},
 });
