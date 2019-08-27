@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import vuescroll from 'vue-scroll';
 import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import router from './router';
@@ -26,6 +27,7 @@ import 'typeface-roboto-mono';
 
 Vue.config.productionTip = false;
 
+Vue.use(vuescroll, { debounce: 600 });
 const app = new Vue({
   i18n,
   router,

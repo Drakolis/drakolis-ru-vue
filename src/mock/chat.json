@@ -1,34 +1,64 @@
 {
+  "currentUser": {
+    "id": 1,
+    "firstName": "Mika",
+    "lastName": "Drakolis"
+  },
   "settings": {
-
+    "displayLastMessage": false
   },
   "chats": [
     {
       "type": "chat",
       "unreadCount": 10,
       "muted": false,
+      "pinned": true,
       "displayName": "Mika Drakolis",
-      "avatar": "",
+      "avatar": "https://secure.gravatar.com/avatar/8b703469859381a6fac4af8acf351188?s=48",
       "id": 1,
-      "with": {}
+      "with": {
+        "id": 1,
+        "firstName": "Mika",
+        "lastName": "Drakolis"
+      },
+      "lastMessage": {
+        "text": "Now this here was a pretty long message about this message itself!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
     },
     {
       "type": "group",
       "unreadCount": 10,
       "muted": false,
-      "displayName": "Here be Dragons!",
+      "displayName": "Here be Dragons",
       "avatar": "",
       "id": 2,
-      "members": []
+      "members": [],
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "id": 1,
+          "firstName": "Mika",
+          "lastName": "Drakolis"
+        }
+      }
     },
     {
       "type": "channel",
       "unreadCount": 10,
       "muted": false,
-      "displayName": "Fire from Drakolis's Ass",
+      "displayName": "Fire from Drakolis's ass",
       "avatar": "",
       "id": 3,
-      "members": []
+      "members": [],
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
     },
     {
       "type": "chat",
@@ -37,6 +67,330 @@
       "displayName": "Mirra Lisowski",
       "avatar": "",
       "id": 4,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "id": 1,
+          "firstName": "Mika",
+          "lastName": "Drakolis"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "pinned": true,
+      "displayName": "Caribas",
+      "avatar": "",
+      "id": 5,
+      "with": {
+        "id": 2,
+        "firstName": "Caribas"
+      },
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "id": 2,
+          "firstName": "Caribas"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "🐉",
+      "avatar": "",
+      "id": 6,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Don Drakon !",
+      "avatar": "",
+      "id": 7,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "group",
+      "unreadCount": 10,
+      "muted": false,
+      "pinned": true,
+      "displayName": "Уебаны руинящие катки",
+      "avatar": "",
+      "id": 2,
+      "members": [],
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "id": 2,
+          "firstName": "Caribas"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {},
+      "lastMessage": {
+        "text": "Hello World!",
+        "from": {
+          "firstName": "Nobody"
+        }
+      }
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
+      "with": {}
+    },
+    {
+      "type": "chat",
+      "unreadCount": 10,
+      "muted": true,
+      "displayName": "Pomidor Salat",
+      "avatar": "",
+      "id": 5,
       "with": {}
     },
     {

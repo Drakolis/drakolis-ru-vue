@@ -13,10 +13,10 @@
         instead.
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="confirm()" color="red darken-4" :loading="deleting">
+        <v-btn color="red darken-4" :loading="deleting" @click="confirm()">
           Delete
         </v-btn>
-        <v-btn @click="cancel()" color="secondary">
+        <v-btn color="secondary" @click="cancel()">
           Cancel
         </v-btn>
       </v-card-actions>
@@ -25,20 +25,26 @@
 </template>
 
 <script>
-import Colors from "@/Colors.js";
-import { UI_EVENTS } from "@/bus.js";
+import Colors from '@/colors.js';
+import { UI_EVENTS } from '@/bus.js';
 
 export default {
-  props: ["updateAccounts"],
+  props: ['updateAccounts'],
   data() {
     return {
       account: null,
       deleting: false,
       open: false,
       titleStyle: {
-        background: Colors.red.darken4
-      }
+        background: Colors.red.darken4,
+      },
     };
+  },
+  mounted() {
+    this.$bus.$on(UI_EVENTS.BUDGET.OPEN_DELETE_ACCOUNT, (account) => {
+      this.open = true;
+      this.account = account;
+    });
   },
   methods: {
     cancel() {
@@ -49,23 +55,15 @@ export default {
     confirm() {
       if (this.open && !this.deleting) {
         this.deleting = true;
-        this.$api.budget.account.delete(this.account.id).then(() =>
-          this.updateAccounts()
-            .then(() => {
-              this.open = false;
-            })
-            .finally(() => {
-              this.deleting = false;
-            })
-        );
+        this.$api.budget.account.delete(this.account.id).then(() => this.updateAccounts()
+          .then(() => {
+            this.open = false;
+          })
+          .finally(() => {
+            this.deleting = false;
+          }));
       }
-    }
+    },
   },
-  mounted() {
-    this.$bus.$on(UI_EVENTS.BUDGET.OPEN_DELETE_ACCOUNT, account => {
-      this.open = true;
-      this.account = account;
-    });
-  }
 };
 </script>

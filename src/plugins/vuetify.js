@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import colors from '@/colors';
 
 Vue.use(Vuetify);
 
@@ -12,6 +13,7 @@ export default new Vuetify({
     },
     themes: {
       dark: {
+
         primaryOld: '#FF5600',
         secondary1Old: '#EC2039',
         secondary2Old: '#FF9700',
@@ -21,7 +23,7 @@ export default new Vuetify({
         darker: '#353535',
         darkest: '#212121',
 
-        primary: '#C62828',
+        primary: colors.red.darken3,
         accent: '#82B1FF',
         error: '#FF5252',
         info: '#2196F3',

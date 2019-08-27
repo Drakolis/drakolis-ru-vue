@@ -1,8 +1,10 @@
 <template>
-  <v-list-tile avatar @click="selectAccount(account.id)" class="mb-2">
+  <v-list-tile avatar class="mb-2" @click="selectAccount(account.id)">
     <v-list-tile-avatar>
       <v-avatar size="48" :color="avatarColor">
-        <v-icon dark>{{ currencySymbol(account.currency) }}</v-icon>
+        <v-icon dark>
+          {{ currencySymbol(account.currency) }}
+        </v-icon>
       </v-avatar>
     </v-list-tile-avatar>
 
@@ -18,7 +20,11 @@
     </v-list-tile-content>
 
     <v-list-tile-action>
-      <v-btn @click="deleteAccount(account)" icon flat color="red darken-3">
+      <v-btn
+icon
+flat @click="deleteAccount(account)"
+             color="red darken-3"
+>
         <v-icon>delete</v-icon>
       </v-btn>
     </v-list-tile-action>
@@ -26,39 +32,39 @@
 </template>
 
 <script>
-import { UI_EVENTS } from "@/bus.js";
-import Colors from "@/Colors.js";
+import { UI_EVENTS } from '@/bus.js';
+import Colors from '@/colors.js';
 
 export default {
+  props: ['account'],
   data() {
     return {
       avatarColor: Colors.cyan.darken2,
       summStyle: {
-        color: Colors.grey.lighten3
+        color: Colors.grey.lighten3,
       },
       centsStyle: {
-        color: Colors.grey.lighten1
-      }
+        color: Colors.grey.lighten1,
+      },
     };
   },
-  props: ["account"],
   methods: {
     currencySymbol(currencyCode) {
       switch (currencyCode) {
-        case "USD":
-          return "mdi-currency-usd";
-        case "EUR":
-          return "mdi-currency-eur";
-        case "RUR":
-          return "mdi-currency-rub";
+        case 'USD':
+          return 'mdi-currency-usd';
+        case 'EUR':
+          return 'mdi-currency-eur';
+        case 'RUR':
+          return 'mdi-currency-rub';
       }
     },
     deleteAccount(account) {
       this.$bus.$emit(UI_EVENTS.BUDGET.OPEN_DELETE_ACCOUNT, account);
     },
     selectAccount(accountId) {
-      this.$emit("selectValue", accountId);
-    }
-  }
+      this.$emit('selectValue', accountId);
+    },
+  },
 };
 </script>
