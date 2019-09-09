@@ -56,6 +56,30 @@
                           </v-list-item-title>
                         </v-list-item-content>
                       </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-gender-transgender</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title>
+                            {{
+                              myData.sex
+                            }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-human-male-female</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title>
+                            {{
+                              myData.orientation
+                            }}
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
                     </v-list>
                   </v-card-text>
                 </v-card>
